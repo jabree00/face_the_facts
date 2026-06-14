@@ -9,6 +9,7 @@ def recursively_scan_project(dir):
     dir_listing = os.listdir(dir)
 
     index = len(dir_listing) - 1
+    print(f"Processing files and subdirectories with {dir}")
     while (dir_listing != []):
         #handle files 
         if(os.path.isfile(dir_listing)):
@@ -20,7 +21,8 @@ def recursively_scan_project(dir):
 
         dir_listing.pop(index)
         index = index - 1
-
+    
+    print("Finished identifing imports statically")
     return imports_listing 
 
 '''
@@ -29,7 +31,7 @@ Given a file, find CVES of all identified imports
 def scan_file(file):
     f = open(file,"r")
     file_contents = f.read(); 
-    regex = r""
+    regex = r"match "
     matches_list = file_contents.match(regex)
     return matches_list
 
@@ -59,6 +61,7 @@ def extract_cves(json_data):
         cve_data.append(cve_dict)
     return cve_data
 
+
 def main(): 
     intro = '''FACE THE FACTS...
     Your project probably has vulnerabilities.
@@ -67,8 +70,11 @@ def main():
     '''
     print(intro)
 
-    all_imports = recursively_scan_project()
-    for imp in all_imports:
-        query_nist_database(imp)
+    imports_found = recursively_scan_project()
+    for imp in imports_found:
+        cves = query_nist_database(imp)
+        for current in cves:
+            print(current)
+
 
 
