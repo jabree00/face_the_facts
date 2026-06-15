@@ -1,6 +1,6 @@
 <h1>READ ME! (please)</h1>
 
-<p>Face The Facts is a script that identifies package vulnerabilites within a given project.</p>
+<p>Face the Facts is a script that identifies package vulnerabilites within a given Python project.</p>
 
 <h2>Resources Consulted</h2>
 <ul>
@@ -20,7 +20,7 @@
     <li><a href="https://www.w3schools.com/python/python_file_open.asp">Reading File in Python</a></li>
     <li><a href="https://www.w3schools.com/python/python_regex.asp">Python Regex Special Characters</a></li>
     <li><a href="https://stackoverflow.com/questions/68094079/wrap-text-in-txt-file-with-python3">Using Text Wrap</a></li>
-    https://www.w3schools.com/python/ref_module_textwrap.asp
+    <li><a href="https://www.w3schools.com/python/ref_module_textwrap.asp">More on Using Text Wrap</a></li>
 </ul>
 
 <h2>Problem Definition</h2>
@@ -30,7 +30,7 @@
 
 <p><strong>What existing tools or approaches exist?</strong> There are several exisiting tools including pip-audit, Trivy, and OSV Scanner - as identified by ChatGPT.</p>
 
-<p><strong>What gap does your tool fill?</strong>In addition to being open-source and free, my tool provides the context of the import's usage. Ideally, this allows the analyst to more quickly determine and remember whether that vulnerability may apply to the project.</p>
+<p><strong>What gap does your tool fill?</strong> In addition to being open-source and free, my tool provides the context of the import's usage. Ideally, this allows the analyst to more quickly determine and remember whether that vulnerability may apply to the project.</p>
 
 
 <h2>System Design</h2>
@@ -41,10 +41,9 @@
  
 <h2>Evaluation</h2>
 <p><strong>How did you test the tool?</strong></p>
-<p>Gemini created a small Python project. I added additional imports. I commentd one import out and added an "import ______ as _____" statement to see if the script is effective in these cases.</p>
+<p>Gemini created a small Python project. I added additional imports. I commented out one import as well as added an "import ______ as _____" statement to see if the script is effective in these cases.</p>
  
-<p><strong>Results:</strong></p>
-<p></p>
+<p><strong>Results:</strong>The script is able to successfully identify many CVES relevant to the import. However, some imports have simple names that could be used for non-Python vulnerabilities - i.e. the requests package. If the package name resembles a dictionary word ("colorama" package would be a non-example), then additional keywords should be added to the search.</p>
 
 <h2>Known Issues</h2>
 <ul>

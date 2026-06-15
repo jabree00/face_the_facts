@@ -1626,3 +1626,85 @@ further requires the use of uncommon API
 (complicated structured dtypes), which is very
 unlikely to be available to an unprivileged
 user'}}
+
+A total of 6 cves for the pandas import.
+
+Contextual Usage: ['Line 6: import pandas as p\n']
+
+Vulnerabilities:
+{'id': 'CVE-2024-23752', 'description': {'lang':
+'en', 'value': 'GenerateSDFPipeline in
+synthetic_dataframe in PandasAI (aka pandas-ai)
+through 1.5.17 allows attackers to trigger the
+generation of arbitrary Python code that is
+executed by SDFCodeExecutor. An attacker can
+create a dataframe that provides an English
+language specification of this Python code. NOTE:
+the vendor previously attempted to restrict code
+execution in response to a separate issue,
+CVE-2023-39660.'}}{'id': 'CVE-2024-12366', 'description': {'lang':
+'en', 'value': 'PandasAI uses an interactive
+prompt function that is vulnerable to prompt
+injection and run arbitrary Python code that can
+lead to Remote Code Execution (RCE) instead of the
+intended explanation of the natural language
+processing by the LLM.'}}{'id': 'CVE-2025-46725', 'description': {'lang':
+'en', 'value': 'Langroid is a Python framework to
+build large language model (LLM)-powered
+applications. Prior to version 0.53.15,
+`LanceDocChatAgent` uses pandas eval() through
+`compute_from_docs()`. As a result, an attacker
+may be able to make the agent run malicious
+commands through `QueryPlan.dataframe_calc]`)
+compromising the host system. Langroid 0.53.15
+sanitizes input to the affected function by
+default to tackle the most common attack vectors,
+and added several warnings about the risky
+behavior in the project documentation.'}}{'id': 'CVE-2025-62703', 'description': {'lang':
+'en', 'value': "Fugue is a unified interface for
+distributed computing that lets users execute
+Python, Pandas, and SQL code on Spark, Dask, and
+Ray with minimal rewrites. In version 0.9.2 and
+prior, there is a remote code execution
+vulnerability by pickle deserialization via
+FlaskRPCServer. The Fugue framework implements an
+RPC server system for distributed computing
+operations. In the core functionality of the RPC
+server implementation, I found that the _decode()
+function in fugue/rpc/flask.py directly uses
+cloudpickle.loads() to deserialize data without
+any sanitization. This creates a remote code
+execution vulnerability when malicious pickle data
+is processed by the RPC server. The vulnerability
+exists in the RPC communication mechanism where
+the client can send arbitrary serialized Python
+objects that will be deserialized on the server
+side, allowing attackers to execute arbitrary code
+on the victim's machine. This issue has been
+patched via commit 6f25326."}}{'id': 'CVE-2026-41138', 'description': {'lang':
+'en', 'value': 'Flowise is a drag & drop user
+interface to build a customized large language
+model flow. Prior to 3.1.0, there is a remote code
+execution vulnerability in AirtableAgent.ts caused
+by lack of input verification when using Pandas.
+The user’s input is directly applied to the
+question parameter within the prompt template and
+it is reflected to the Python code without any
+sanitization. This vulnerability is fixed in
+3.1.0.'}}{'id': 'CVE-2026-31237', 'description': {'lang':
+'en', 'value': 'The Ludwig framework thru 0.10.4
+is vulnerable to insecure deserialization
+(CWE-502) through its predict() method. When a
+user provides a dataset file path to the predict()
+method, the framework automatically determines the
+file format. If the file is a pickle (.pkl) file,
+it is loaded using pandas.read_pickle() without
+any validation or security restrictions. This
+allows the deserialization of arbitrary Python
+objects via the unsafe pickle module. A remote
+attacker can exploit this by providing a
+maliciously crafted pickle file, leading to
+arbitrary code execution on the system running the
+Ludwig prediction.'}}
+
+
