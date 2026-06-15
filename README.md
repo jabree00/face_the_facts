@@ -1,4 +1,5 @@
 <h1>READ ME! (please)</h1>
+
 <p>Face The Facts is a script that identifies package vulnerabilites within a given project.</p>
 
 <h2>Resources Consulted</h2>
@@ -16,7 +17,50 @@
     <li><a href="https://www.w3schools.com/python/python_match.asp">Python Matches</a></li>
     <li><a href="https://stackoverflow.com/questions/15221473/how-do-i-update-upgrade-pip-itself-from-inside-my-virtual-environment">Upgrading Pip</a></li>
     <li><a href="https://www.geeksforgeeks.org/python/re-match-in-python/">Regex Match Python</a></li>
+    <li><a href="https://www.w3schools.com/python/python_file_open.asp">Reading File in Python</a></li>
+    <li><a href="https://www.w3schools.com/python/python_regex.asp">Python Regex Special Characters</a></li>
+    <li><a href="https://stackoverflow.com/questions/68094079/wrap-text-in-txt-file-with-python3">Using Text Wrap</a></li>
+    https://www.w3schools.com/python/ref_module_textwrap.asp
+</ul>
 
+<h2>Problem Definition</h2>
+<p><strong>What specific problem are you addressing?</strong> This project identifies vulnerabilites statically, without running the code. This avoids unnecessary exposure to vulnerabilites.</p>
+
+<p><strong>Why is the problem important?</strong> Manually identifying all vulnerabilities in a code base is a lot of work. This makes developers less likely to take the time to find those vulnerabilities.</p>
+
+<p><strong>What existing tools or approaches exist?</strong> There are several exisiting tools including pip-audit, Trivy, and OSV Scanner - as identified by ChatGPT.</p>
+
+<p><strong>What gap does your tool fill?</strong>In addition to being open-source and free, my tool provides the context of the import's usage. Ideally, this allows the analyst to more quickly determine and remember whether that vulnerability may apply to the project.</p>
+
+
+<h2>System Design</h2>
+<p><strong>High level architecture:</strong> This project runs in a single Python script.</p>
+
+<p><strong>Technology choices and justification:</strong> Python is widely used programming language, so this language allows the program to be easily run, understood, and adapted.</p>
+
+ 
+<h2>Evaluation</h2>
+<p><strong>How did you test the tool?</strong></p>
+<p>Gemini created a small Python project. I added additional imports. I commentd one import out and added an "import ______ as _____" statement to see if the script is effective in these cases.</p>
+ 
+<p><strong>Results:</strong></p>
+<p></p>
+
+<h2>Known Issues</h2>
+<ul>
+    <li>The current code scans all files (not just Python files), so there could be false positives of "import like" lines.</li>
+    <li>There is a large possibility for redundant API calls from files that import the same imports.</li>
+</ul>
+
+<h2>How to Run this Project (One Option):</h2>
+<ul>
+    <li>Download VSCode and run the following commands:</li>
+    <li>(If needed) Install Python</li>
+    <li>1. python -m venv venv</li>
+    <li>2. source venv/bin/activate</li>
+    <li>3. pip install -r requirements.txt</li>
+    <li>Select the latest version of Python (venv) as your interpreter.</li>
+    <li>Run python3 face_the_facts.py</li>
 </ul>
 
 <h2>AI Disclosure</h2>
@@ -39,6 +83,11 @@ ERROR: Could not find a version that satisfies the requirement requests===2.34.0
 ERROR: No matching distribution found for requests===2.34.0</strong>
 
 Ultimately, I needed to find the file path of the Python 3.14 installation and supply that file path when creating my virtual environment. 
+
+Prompt #3: Identify Resolutions for Newline Causing File Write Error 
+<strong>newline charcter causing erro python file writing</strong>
+I did not end up using ChatGPT's advice, but instead avoided using the character 
+that was causing the issue.
 
 <h3>For generating sample Python projects for testing...</h3>
 

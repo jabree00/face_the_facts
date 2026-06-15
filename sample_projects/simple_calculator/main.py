@@ -1,5 +1,9 @@
 # 1. Standard Library Import (Built into Python)
+#import colorama
 import datetime
+import requests
+import numpy 
+import pandas as p
 
 # 2. Local Module Imports (Custom project files)
 # Import a specific function using the 'from' syntax

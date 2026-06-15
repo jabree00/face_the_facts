@@ -1,0 +1,1628 @@
+FILE FOUND: ./sample_projects/simple_calculator/main.py
+
+These imports were found: ['datetime', 'requests', 'numpy', 'pandas']
+
+A total of 2 cves for the datetime import.
+
+Contextual Usage: ['Line 3: import datetime\n',
+'Line 22:     print(f"--- Execution Time:
+{datetime.datetime.now()} ---")\n']
+
+Vulnerabilities:
+{'id': 'CVE-2008-3143', 'description': {'lang':
+'en', 'value': 'Multiple integer overflows in
+Python before 2.5.2 might allow context-dependent
+attackers to have an unknown impact via vectors
+related to (1) Include/pymem.h; (2) _csv.c, (3)
+_struct.c, (4) arraymodule.c, (5) audioop.c, (6)
+binascii.c, (7) cPickle.c, (8) cStringIO.c, (9)
+cjkcodecs/multibytecodec.c, (10) datetimemodule.c,
+(11) md5.c, (12) rgbimgmodule.c, and (13)
+stropmodule.c in Modules/; (14) bufferobject.c,
+(15) listobject.c, and (16) obmalloc.c in
+Objects/; (17) Parser/node.c; and (18) asdl.c,
+(19) ast.c, (20) bltinmodule.c, and (21) compile.c
+in Python/, as addressed by "checks for integer
+overflows, contributed by Google."'}}{'id': 'CVE-2021-29510', 'description': {'lang':
+'en', 'value': "Pydantic is a data validation and
+settings management using Python type hinting. In
+affected versions passing either `'infinity'`,
+`'inf'` or `float('inf')` (or their negatives) to
+`datetime` or `date` fields causes validation to
+run forever with 100% CPU usage (on one CPU).
+Pydantic has been patched with fixes available in
+the following versions: v1.8.2, v1.7.4, v1.6.2.
+All these versions are available on
+pypi(https://pypi.org/project/pydantic/#history),
+and will be available on conda-
+forge(https://anaconda.org/conda-forge/pydantic)
+soon. See the changelog(https://pydantic-
+docs.helpmanual.io/) for details. If you
+absolutely can't upgrade, you can work around this
+risk using a validator(https://pydantic-
+docs.helpmanual.io/usage/validators/) to catch
+these values. This is not an ideal solution (in
+particular you'll need a slightly different
+function for datetimes), instead of a hack like
+this you should upgrade pydantic. If you are not
+using v1.8.x, v1.7.x or v1.6.x and are unable to
+upgrade to a fixed version of pydantic, please
+create an issue at
+https://github.com/samuelcolvin/pydantic/issues
+requesting a back-port, and we will endeavour to
+release a patch for earlier versions of
+pydantic."}}
+
+A total of 90 cves for the requests import.
+
+Contextual Usage: ['Line 4: import requests\n',
+'Line 16:     import requests\n', 'Line 18:
+requests = None\n', 'Line 34:     if requests:\n',
+'Line 35:         print("Status: \'requests\'
+package is installed and working!")\n', 'Line 37:
+print("Status: \'requests\' package is missing.
+(Run: pip install requests)")\n']
+
+Vulnerabilities:
+{'id': 'CVE-2008-4099', 'description': {'lang':
+'en', 'value': 'PyDNS (aka python-dns) before
+2.3.1-4 in Debian GNU/Linux does not use random
+source ports or transaction IDs for DNS requests,
+which makes it easier for remote attackers to
+spoof DNS responses, a different vulnerability
+than CVE-2008-1447.'}}{'id': 'CVE-2008-4126', 'description': {'lang':
+'en', 'value': 'PyDNS (aka python-dns) before
+2.3.1-5 in Debian GNU/Linux does not use random
+source ports for DNS requests and does not use
+random transaction IDs for DNS retries, which
+makes it easier for remote attackers to spoof DNS
+responses, a different vulnerability than
+CVE-2008-1447.  NOTE: this vulnerability exists
+because of an incomplete fix for CVE-2008-4099.'}}{'id': 'CVE-2011-1364', 'description': {'lang':
+'en', 'value': 'Cross-site request forgery (CSRF)
+vulnerability in _ah/admin/interactive/execute
+(aka the Interactive Console) in the SDK Console
+(aka Admin Console) in the Google App Engine
+Python SDK before 1.5.4 allows remote attackers to
+hijack the authentication of administrators for
+requests that execute arbitrary Python code via
+the code parameter.'}}{'id': 'CVE-2014-0105', 'description': {'lang':
+'en', 'value': 'The auth_token middleware in the
+OpenStack Python client library for Keystone (aka
+python-keystoneclient) before 0.7.0 does not
+properly retrieve user tokens from memcache, which
+allows remote authenticated users to gain
+privileges in opportunistic circumstances via a
+large number of requests, related to an
+"interaction between eventlet and python-
+memcached."'}}{'id': 'CVE-2014-1829', 'description': {'lang':
+'en', 'value': 'Requests (aka python-requests)
+before 2.3.0 allows remote servers to obtain a
+netrc password by reading the Authorization header
+in a redirected request.'}}{'id': 'CVE-2014-1830', 'description': {'lang':
+'en', 'value': 'Requests (aka python-requests)
+before 2.3.0 allows remote servers to obtain
+sensitive information by reading the Proxy-
+Authorization header in a redirected request.'}}{'id': 'CVE-2016-6581', 'description': {'lang':
+'en', 'value': 'A HTTP/2 implementation built
+using any version of the Python HPACK library
+between v1.0.0 and v2.2.0 could be targeted for a
+denial of service attack, specifically a so-called
+"HPACK Bomb" attack. This attack occurs when an
+attacker inserts a header field that is exactly
+the size of the HPACK dynamic header table into
+the dynamic header table. The attacker can then
+send a header block that is simply repeated
+requests to expand that field in the dynamic
+table. This can lead to a gigantic compression
+ratio of 4,096 or better, meaning that 16kB of
+data can decompress to 64MB of data on the target
+machine.'}}{'id': 'CVE-2018-18074', 'description': {'lang':
+'en', 'value': 'The Requests package before 2.20.0
+for Python sends an HTTP Authorization header to
+an http URI upon receiving a same-hostname https-
+to-http redirect, which makes it easier for remote
+attackers to discover credentials by sniffing the
+network.'}}{'id': 'CVE-2013-4409', 'description': {'lang':
+'en', 'value': 'An eval() vulnerability exists in
+Python Software Foundation Djblets 0.7.21 and
+Beanbag Review Board before 1.7.15 when parsing
+JSON requests.'}}{'id': 'CVE-2016-1000110', 'description': {'lang':
+'en', 'value': 'The CGIHandler class in Python
+before 2.7.12 does not protect against the
+HTTP_PROXY variable name clash in a CGI script,
+which could allow a remote attacker to redirect
+HTTP requests.'}}{'id': 'CVE-2013-1895', 'description': {'lang':
+'en', 'value': 'The py-bcrypt module before 0.3
+for Python does not properly handle concurrent
+memory access, which allows attackers to bypass
+authentication via multiple authentication
+requests, which trigger the password hash to be
+overwritten.'}}{'id': 'CVE-2020-13948', 'description': {'lang':
+'en', 'value': 'While investigating a bug report
+on Apache Superset, it was determined that an
+authenticated user could craft requests via a
+number of templated text fields in the product
+that would allow arbitrary access to Python’s `os`
+package in the web application process in versions
+< 0.37.1. It was thus possible for an
+authenticated user to list and access files,
+environment variables, and process information.
+Additionally it was possible to set environment
+variables for the current process, create and
+update files in folders writable by the web
+process, and execute arbitrary programs accessible
+by the web process. All other operations available
+to the `os` package in Python were also available,
+even if not explicitly enumerated in this CVE.'}}{'id': 'CVE-2021-21241', 'description': {'lang':
+'en', 'value': 'The Python "Flask-Security-Too"
+package is used for adding security features to
+your Flask application. It is an is a
+independently maintained version of Flask-Security
+based on the 3.0.0 version of Flask-Security. In
+Flask-Security-Too from version 3.3.0 and before
+version 3.4.5, the /login and /change endpoints
+can return the authenticated user\'s
+authentication token in response to a GET request.
+Since GET requests aren\'t protected with a CSRF
+token, this could lead to a malicious 3rd party
+site acquiring the authentication token. Version
+3.4.5 and version 4.0.0 are patched. As a
+workaround, if you aren\'t using authentication
+tokens - you can set the SECURITY_TOKEN_MAX_AGE to
+"0" (seconds) which should make the token
+unusable.'}}{'id': 'CVE-2021-23336', 'description': {'lang':
+'en', 'value': 'The package python/cpython from 0
+and before 3.6.13, from 3.7.0 and before 3.7.10,
+from 3.8.0 and before 3.8.8, from 3.9.0 and before
+3.9.2 are vulnerable to Web Cache Poisoning via
+urllib.parse.parse_qsl and urllib.parse.parse_qs
+by using a vector called parameter cloaking. When
+the attacker can separate query parameters using a
+semicolon (;), they can cause a difference in the
+interpretation of the request between the proxy
+(running with default configuration) and the
+server. This can result in malicious requests
+being cached as completely safe ones, as the proxy
+would usually not see the semicolon as a
+separator, and therefore would not include it in a
+cache key of an unkeyed parameter.'}}{'id': 'CVE-2021-21273', 'description': {'lang':
+'en', 'value': 'Synapse is a Matrix reference
+homeserver written in python (pypi package matrix-
+synapse). Matrix is an ecosystem for open
+federated Instant Messaging and VoIP. In Synapse
+before version 1.25.0, requests to user provided
+domains were not restricted to external IP
+addresses when calculating the key validity for
+third-party invite events and sending push
+notifications. This could cause Synapse to make
+requests to internal infrastructure. The type of
+request was not controlled by the user, although
+limited modification of request bodies was
+possible. For the most thorough protection server
+administrators should remove the deprecated
+`federation_ip_range_blacklist` from their
+settings after upgrading to Synapse v1.25.0 which
+will result in Synapse using the improved default
+IP address restrictions. See the new
+`ip_range_blacklist` and `ip_range_whitelist`
+settings if more specific control is necessary.'}}{'id': 'CVE-2021-21274', 'description': {'lang':
+'en', 'value': 'Synapse is a Matrix reference
+homeserver written in python (pypi package matrix-
+synapse). Matrix is an ecosystem for open
+federated Instant Messaging and VoIP. In Synapse
+before version 1.25.0, a malicious homeserver
+could redirect requests to their .well-known file
+to a large file. This can lead to a denial of
+service attack where homeservers will consume
+significantly more resources when requesting the
+.well-known file of a malicious homeserver. This
+affects any server which accepts federation
+requests from untrusted servers. Issue is resolved
+in version 1.25.0. As a workaround the
+`federation_domain_whitelist` setting can be used
+to restrict the homeservers communicated with over
+federation.'}}{'id': 'CVE-2021-21392', 'description': {'lang':
+'en', 'value': 'Synapse is a Matrix reference
+homeserver written in python (pypi package matrix-
+synapse). Matrix is an ecosystem for open
+federated Instant Messaging and VoIP. In Synapse
+before version 1.28.0 requests to user provided
+domains were not restricted to external IP
+addresses when transitional IPv6 addresses were
+used. Outbound requests to federation, identity
+servers, when calculating the key validity for
+third-party invite events, sending push
+notifications, and generating URL previews are
+affected. This could cause Synapse to make
+requests to internal infrastructure on dual-stack
+networks. See referenced GitHub security advisory
+for details and workarounds.'}}{'id': 'CVE-2021-29471', 'description': {'lang':
+'en', 'value': 'Synapse is a Matrix reference
+homeserver written in python (pypi package matrix-
+synapse). Matrix is an ecosystem for open
+federated Instant Messaging and VoIP. In Synapse
+before version 1.33.2 "Push rules" can specify
+conditions under which they will match, including
+`event_match`, which matches event content against
+a pattern including wildcards. Certain patterns
+can cause very poor performance in the matching
+engine, leading to a denial-of-service when
+processing moderate length events. The issue is
+patched in version 1.33.2. A potential workaround
+might be to prevent users from making custom push
+rules, by blocking such requests at a reverse-
+proxy.'}}{'id': 'CVE-2021-32677', 'description': {'lang':
+'en', 'value': "FastAPI is a web framework for
+building APIs with Python 3.6+ based on standard
+Python type hints. FastAPI versions lower than
+0.65.2 that used cookies for authentication in
+path operations that received JSON payloads sent
+by browsers were vulnerable to a Cross-Site
+Request Forgery (CSRF) attack. In versions lower
+than 0.65.2, FastAPI would try to read the request
+payload as JSON even if the content-type header
+sent was not set to application/json or a
+compatible JSON media type (e.g.
+application/geo+json). A request with a content
+type of text/plain containing JSON data would be
+accepted and the JSON data would be extracted.
+Requests with content type text/plain are exempt
+from CORS preflights, for being considered Simple
+requests. The browser will execute them right away
+including cookies, and the text content could be a
+JSON string that would be parsed and accepted by
+the FastAPI application. This is fixed in FastAPI
+0.65.2. The request data is now parsed as JSON
+only if the content-type header is
+application/json or another JSON compatible media
+type like application/geo+json. It's best to
+upgrade to the latest FastAPI, but if updating is
+not possible then a middleware or a dependency
+that checks the content-type header and aborts the
+request if it is not application/json or another
+JSON compatible content type can act as a
+mitigating workaround."}}{'id': 'CVE-2021-41125', 'description': {'lang':
+'en', 'value': 'Scrapy is a high-level web
+crawling and scraping framework for Python. If you
+use `HttpAuthMiddleware` (i.e. the `http_user` and
+`http_pass` spider attributes) for HTTP
+authentication, all requests will expose your
+credentials to the request target. This includes
+requests generated by Scrapy components, such as
+`robots.txt` requests sent by Scrapy when the
+`ROBOTSTXT_OBEY` setting is set to `True`, or as
+requests reached through redirects. Upgrade to
+Scrapy 2.5.1 and use the new `http_auth_domain`
+spider attribute to control which domains are
+allowed to receive the configured HTTP
+authentication credentials. If you are using
+Scrapy 1.8 or a lower version, and upgrading to
+Scrapy 2.5.1 is not an option, you may upgrade to
+Scrapy 1.8.1 instead. If you cannot upgrade, set
+your HTTP authentication credentials on a per-
+request basis, using for example the
+`w3lib.http.basic_auth_header` function to convert
+your credentials into a value that you can assign
+to the `Authorization` header of your request,
+instead of defining your credentials globally
+using `HttpAuthMiddleware`.'}}{'id': 'CVE-2022-24761', 'description': {'lang':
+'en', 'value': "Waitress is a Web Server Gateway
+Interface server for Python 2 and 3. When using
+Waitress versions 2.1.0 and prior behind a proxy
+that does not properly validate the incoming HTTP
+request matches the RFC7230 standard, Waitress and
+the frontend proxy may disagree on where one
+request starts and where it ends. This would allow
+requests to be smuggled via the front-end proxy to
+waitress and later behavior. There are two classes
+of vulnerability that may lead to request
+smuggling that are addressed by this advisory: The
+use of Python's `int()` to parse strings into
+integers, leading to `+10` to be parsed as `10`,
+or `0x01` to be parsed as `1`, where as the
+standard specifies that the string should contain
+only digits or hex digits; and Waitress does not
+support chunk extensions, however it was
+discarding them without validating that they did
+not contain illegal characters. This vulnerability
+has been patched in Waitress 2.1.1. A workaround
+is available. When deploying a proxy in front of
+waitress, turning on any and all functionality to
+make sure that the request matches the RFC7230
+standard. Certain proxy servers may not have this
+functionality though and users are encouraged to
+upgrade to the latest version of waitress
+instead."}}{'id': 'CVE-2022-24801', 'description': {'lang':
+'en', 'value': "Twisted is an event-based
+framework for internet applications, supporting
+Python 3.6+. Prior to version 22.4.0rc1, the
+Twisted Web HTTP 1.1 server, located in the
+`twisted.web.http` module, parsed several HTTP
+request constructs more leniently than permitted
+by RFC 7230. This non-conformant parsing can lead
+to desync if requests pass through multiple HTTP
+parsers, potentially resulting in HTTP request
+smuggling. Users who may be affected use Twisted
+Web's HTTP 1.1 server and/or proxy and also pass
+requests through a different HTTP server and/or
+proxy. The Twisted Web client is not affected. The
+HTTP 2.0 server uses a different parser, so it is
+not affected. The issue has been addressed in
+Twisted 22.4.0rc1. Two workarounds are available:
+Ensure any vulnerabilities in upstream proxies
+have been addressed, such as by upgrading them; or
+filter malformed requests by other means, such as
+configuration of an upstream proxy."}}{'id': 'CVE-2022-39254', 'description': {'lang':
+'en', 'value': 'matrix-nio is a Python Matrix
+client library, designed according to sans I/O
+principles. Prior to version 0.20, when a users
+requests a room key from their devices, the
+software correctly remember the request. Once they
+receive a forwarded room key, they accept it
+without checking who the room key came from. This
+allows homeservers to try to insert room keys of
+questionable validity, potentially mounting an
+impersonation attack. Version 0.20 fixes the
+issue.'}}{'id': 'CVE-2023-23608', 'description': {'lang':
+'en', 'value': 'Spotipy is a light weight Python
+library for the Spotify Web API. In versions prior
+to 2.22.1, if a malicious URI is passed to the
+library, the library can be tricked into
+performing an operation on a different API
+endpoint than intended. The code Spotipy uses to
+parse URIs and URLs allows an attacker to insert
+arbitrary characters into the path that is used
+for API requests. Because it is possible to
+include "..", an attacker can redirect for example
+a track lookup via spotifyApi.track() to an
+arbitrary API endpoint like playlists, but this is
+possible for other endpoints as well. The impact
+of this vulnerability depends heavily on what
+operations a client application performs when it
+handles a URI from a user and how it uses the
+responses it receives from the API. This issue is
+patched in version 2.22.1.'}}{'id': 'CVE-2023-25577', 'description': {'lang':
+'en', 'value': "Werkzeug is a comprehensive WSGI
+web application library. Prior to version 2.2.3,
+Werkzeug's multipart form data parser will parse
+an unlimited number of parts, including file
+parts. Parts can be a small amount of bytes, but
+each requires CPU time to parse and may use more
+memory as Python data. If a request can be made to
+an endpoint that accesses `request.data`,
+`request.form`, `request.files`, or
+`request.get_data(parse_form_data=False)`, it can
+cause unexpectedly high resource usage. This
+allows an attacker to cause a denial of service by
+sending crafted multipart data to an endpoint that
+will parse it. The amount of CPU time required can
+block worker processes from handling legitimate
+requests. The amount of RAM required can trigger
+an out of memory kill of the process. Unlimited
+file parts can use up memory and file handles. If
+many concurrent requests are sent continuously,
+this can exhaust or kill all available workers.
+Version 2.2.3 contains a patch for this issue."}}{'id': 'CVE-2023-26051', 'description': {'lang':
+'en', 'value': 'Saleor is a headless, GraphQL
+commerce platform delivering personalized shopping
+experiences. Some internal Python exceptions are
+not handled properly and thus are returned in API
+as error messages. Some messages might contain
+sensitive information like user email address in
+staff-authenticated requests.\n'}}{'id': 'CVE-2023-26052', 'description': {'lang':
+'en', 'value': 'Saleor is a headless, GraphQL
+commerce platform delivering personalized shopping
+experiences. Some internal Python exceptions are
+not handled properly and thus are returned in API
+as error messages. Some messages might contain
+sensitive information like infrastructure details
+in unauthenticated requests. This issue has been
+patched in versions 3.1.48, 3.7.59, 3.8.0, 3.9.27,
+3.10.14 and 3.11.12. '}}{'id': 'CVE-2021-42079', 'description': {'lang':
+'en', 'value': 'An authenticated administrator is
+able to prepare an alert that is able to execute
+an SSRF attack. This is exclusively with POST
+requests.\n\nPOC\n\nStep 1: Prepare the SSRF with
+a request like this:\n\nGET /qstorapi/alertConfigS
+et?senderEmailAddress=a&smtpServerIpAddress=BURPCO
+LLABHOST&smtpServerPort=25&smtpUsername=a&smtpPass
+word=1&smtpAuthType=1&customerSupportEmailAddress=
+1&poolFreeSpaceWarningThreshold=1&poolFreeSpaceAle
+rtThreshold=1&poolFreeSpaceCriticalAlertThreshold=
+1&pagerDutyServiceKey=1&slackWebhookUrl=http://<ta
+rget>&enableAlertTypes&enableAlertTypes=1&disableA
+lertTypes=1&pauseAlertTypes=1&mattermostWebhookUrl
+=http://<TARGET>\nHTTP/1.1\n\nHost: <HOSTNAME>
+\nAccept-Encoding: gzip, deflate\n\nAccept:
+*/*\nAccept-Language: en\n\nUser-Agent:
+Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+AppleWebKit/537.36 (KHTML, like Gecko)
+Chrome/91.0.4472.114 Safari/537.36\n\nConnection:
+close\n\nauthorization: Basic <BASIC_AUTH_HASH>
+\nContent-Type: application/json\n\nContent-
+Length: 0\n\nStep 2: Trigger this alert with this
+request\n\nGET /qstorapi/alertRaise?title=test&mes
+sage=test&severity=1 \nHTTP/1.1\n\nHost:
+<HOSTNAME> \nAccept-Encoding: gzip,
+deflate\n\nAccept: */*\n\nAccept-Language:
+en\n\nUser-Agent: Mozilla/5.0 (Windows NT 10.0;
+Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)
+Chrome/91.0.4472.114 Safari/537.36\n\nConnection:
+close\n\nauthorization: Basic <BASIC_AUTH_HASH>
+\nContent-Type: application/json\n\nContent-
+Length: 1\n\nThe post request received by <TARGET>
+looks like this:\n{\n\u2003\n### Python FLASK
+stuff ####\n\n\u2003\'endpoint\': \'index\',
+\n\u2003\n\'method\': \'POST\',
+\n\u2003\n\'cookies\': ImmutableMultiDict([]),
+\n\u2003\n### END Python FLASK stuff
+####\n\n\u2003\n\'data\': b\'{
+\n\u2003\u2003"attachments": [ \n\u2003\u2003\u200
+3{\n\n\u2003\u2003\u2003\u2003"fallback": "[122]
+test / test.",\n\n\u2003\u2003\u2003\u2003"color":
+"#aa2222",\n\n\u2003\u2003\u2003\u2003"title":
+"[122] test",\n\n\u2003\u2003\u2003\u2003"text":
+"test",\n\n\u2003\u2003\u2003\u2003"fields": [
+\xa0 \n\u2003\u2003\u2003\u2003\u2003{ \xa0 \xa0\n
+\n\u2003\u2003\u2003\u2003\u2003\u2003"title":
+"Alert Severity",\n     \xa0
+\xa0\n\u2003\u2003\u2003\u2003\u2003\u2003"value":
+"CRITICAL",\n     \xa0
+\xa0\n\u2003\u2003\u2003\u2003\u2003\u2003"short":
+false \xa0\n\u2003\u2003\u2003\u2003\u2003}, \xa0{
+\xa0
+\n\u2003\u2003\u2003\u2003\u2003\u2003"title":
+"Appliance", \xa0 \xa0
+\n\u2003\u2003\u2003\u2003\u2003\u2003"value":
+"quantastor (https://<HOSTNAME>)",\n  \xa0 \xa0
+\n\u2003\u2003\u2003\u2003\u2003\u2003"short":
+true \xa0\n\n\u2003\u2003\u2003\u2003\u2003},
+\xa0{ \xa0 \xa0\n\n\u2003\u2003\u2003\u2003\u2003\
+u2003"title": "System / Driver / Kernel Ver", \xa0
+\xa0\n\n\u2003\u2003\u2003\u2003\u2003\u2003"value
+": "5.10.0.156+a25eaacef / scst-3.5.0-pre /
+5.3.0-62-generic", \xa0 \xa0\n\n\u2003\u2003\u2003
+\u2003\u2003\u2003"short": false
+\xa0\n\n\u2003\u2003\u2003\u2003\u2003}, \xa0{
+\xa0 \xa0\n\n\u2003\u2003\u2003\u2003\u2003\u2003"
+title": "System Startup", \xa0 \xa0\n\n\u2003\u200
+3\u2003\u2003\u2003\u2003"value": "Fri Aug \xa06
+16-02-55 2021", \xa0 \xa0\n\n\u2003\u2003\u2003\u2
+003\u2003\u2003"short": true
+\xa0\n\n\u2003\u2003\u2003\u2003\u2003     },
+\xa0{ \xa0 \xa0\n\n\u2003\u2003\u2003\u2003\u2003\
+u2003"title": "SSID", \xa0 \xa0\n\n\u2003\u2003\u2
+003\u2003\u2003\u2003"value":
+"f4823762-1dd1-1333-47a0-6238c474a7e7", \xa0 \xa0\
+n\n\u2003\u2003\u2003\u2003\u2003\u2003"short":
+true \xa0\n\n\u2003\u2003\u2003\u2003\u2003},\n\u2
+003\u2003\u2003\u2003],\n\n\u2003\u2003\u2003\u200
+3"footer": "QuantaStor Call-home
+Alert",\n\n\u2003\u2003\u2003\u2003"footer_icon":
+" https://platform.slack-
+edge.com/img/default_application_icon.png
+",\n\n\u2003\u2003\u2003\u2003"ts":
+1628461774\n\u2003\u2003\u2003}\n\u2003\u2003],
+\n\u2003\u2003"mrkdwn":true \n\u2003}\',
+\n\u2003#### FLASK REQUEST STUFF
+#####\n\n\u2003\'headers\':
+{\n\n\u2003\u2003\'Host\': \'<redacted>\',
+\n\u2003\u2003\'User-Agent\': \'curl/7.58.0\',
+\n\u2003\u2003\'Accept\': \'*/*\',
+\n\u2003\u2003\'Content-Type\':
+\'application/json\', \n\u2003\u2003\'Content-
+Length\': \'790\'\n\n\u2003}, \n\u2003\'args\':
+ImmutableMultiDict([]), \n\u2003\'form\':
+ImmutableMultiDict([]), \n\u2003\'remote_addr\':
+\'217.103.63.173\', \n\u2003\'path\':
+\'/payload/58\', \n\u2003\'whois_ip\': \'TNF-AS,
+NL\'\n}\n\n#### END FLASK REQUEST STUFF #####'}}{'id': 'CVE-2023-41319', 'description': {'lang':
+'en', 'value': 'Fides is an open-source privacy
+engineering platform for managing the fulfillment
+of data privacy requests in a runtime environment,
+and the enforcement of privacy regulations in
+code. The Fides webserver API allows custom
+integrations to be uploaded as a ZIP file. This
+ZIP file must contain YAML files, but Fides can be
+configured to also accept the inclusion of custom
+Python code in it. The custom code is executed in
+a restricted, sandboxed environment, but the
+sandbox can be bypassed to execute any arbitrary
+code. The vulnerability allows the execution of
+arbitrary code on the target system within the
+context of the webserver python process owner on
+the webserver container, which by default is
+`root`, and leverage that access to attack
+underlying infrastructure and integrated systems.
+This vulnerability affects Fides versions `2.11.0`
+through `2.19.0`. Exploitation is limited to API
+clients with the `CONNECTOR_TEMPLATE_REGISTER`
+authorization scope. In the Fides Admin UI this
+scope is restricted to highly privileged users,
+specifically root users and users with the owner
+role.  Exploitation is only possible if the
+security configuration parameter
+`allow_custom_connector_functions` is enabled by
+the user deploying the Fides webserver container,
+either in `fides.toml` or by setting the env var `
+FIDES__SECURITY__ALLOW_CUSTOM_CONNECTOR_FUNCTIONS=
+True`. By default this configuration parameter is
+disabled. The vulnerability has been patched in
+Fides version `2.19.0`. Users are advised to
+upgrade to this version or later to secure their
+systems against this threat. Users unable to
+upgrade should ensure that
+`allow_custom_connector_functions` in `fides.toml`
+and the `FIDES__SECURITY__ALLOW_CUSTOM_CONNECTOR_F
+UNCTIONS` are both either unset or explicit set to
+`False`.'}}{'id': 'CVE-2023-48224', 'description': {'lang':
+'en', 'value': "Fides is an open-source privacy
+engineering platform for managing the fulfillment
+of data privacy requests in a runtime environment,
+and the enforcement of privacy regulations in
+code. The Fides Privacy Center allows data subject
+users to submit privacy and consent requests to
+data controller users of the Fides web
+application. Privacy requests allow data subjects
+to submit a request to access all person data held
+by the data controller, or delete/erase it.
+Consent request allows data subject users to
+modify their privacy preferences for how the data
+controller uses their personal data e.g. data
+sales and sharing consent opt-in/opt-out. If
+`subject_identity_verification_required` in the
+`[execution]` section of `fides.toml` or the env
+var `FIDES__EXECUTION__SUBJECT_IDENTITY_VERIFICATI
+ON_REQUIRED` is set to `True` on the fides
+webserver backend, data subjects are sent a one-
+time code to their email address or phone number,
+depending on messaging configuration, and the one-
+time code must be entered in the Privacy Center UI
+by the data subject before the privacy or consent
+request is submitted. It was identified that the
+one-time code values for these requests were
+generated by the python `random` module, a
+cryptographically weak pseduo-random number
+generator (PNRG). If an attacker generates several
+hundred consecutive one-time codes, this
+vulnerability allows the attacker to predict all
+future one-time code values during the lifetime of
+the backend python process. There is no security
+impact on data access requests as the personal
+data download package is not shared in the Privacy
+Center itself. However, this vulnerability allows
+an attacker to (i) submit a verified data erasure
+request, resulting in deletion of data for the
+targeted user and (ii) submit a verified consent
+request, modifying a user's privacy preferences.
+The vulnerability has been patched in Fides
+version `2.24.0`. Users are advised to upgrade to
+this version or later to secure their systems
+against this threat. There are no known
+workarounds for this vulnerability."}}{'id': 'CVE-2023-6568', 'description': {'lang':
+'en', 'value': "A reflected Cross-Site Scripting
+(XSS) vulnerability exists in the mlflow/mlflow
+repository, specifically within the handling of
+the Content-Type header in POST requests. An
+attacker can inject malicious JavaScript code into
+the Content-Type header, which is then improperly
+reflected back to the user without adequate
+sanitization or escaping, leading to arbitrary
+JavaScript execution in the context of the
+victim's browser. The vulnerability is present in
+the mlflow/server/auth/__init__.py file, where the
+user-supplied Content-Type header is directly
+injected into a Python formatted string and
+returned to the user, facilitating the XSS
+attack."}}{'id': 'CVE-2023-45139', 'description': {'lang':
+'en', 'value': 'fontTools is a library for
+manipulating fonts, written in Python. The
+subsetting module has a XML External Entity
+Injection (XXE) vulnerability which allows an
+attacker to resolve arbitrary entities when a
+candidate font (OT-SVG fonts), which contains a
+SVG table, is parsed. This allows attackers to
+include arbitrary files from the filesystem
+fontTools is running on or make web requests from
+the host system. This vulnerability has been
+patched in version 4.43.0.'}}{'id': 'CVE-2024-22416', 'description': {'lang':
+'en', 'value': 'pyLoad is a free and open-source
+Download Manager written in pure Python. The
+`pyload` API allows any API call to be made using
+GET requests. Since the session cookie is not set
+to `SameSite: strict`, this opens the library up
+to severe attack possibilities via a Cross-Site
+Request Forgery (CSRF) attack. As a result any API
+call can be made via a CSRF attack by an
+unauthenticated user. This issue has been
+addressed in release `0.5.0b3.dev78`. All users
+are advised to upgrade.'}}{'id': 'CVE-2024-23829', 'description': {'lang':
+'en', 'value': 'aiohttp is an asynchronous HTTP
+client/server framework for asyncio and Python.
+Security-sensitive parts of the Python HTTP parser
+retained minor differences in allowable character
+sets, that must trigger error handling to robustly
+match frame boundaries of proxies in order to
+protect against injection of additional requests.
+Additionally, validation could trigger exceptions
+that were not handled consistently with processing
+of other malformed input.  Being more lenient than
+internet standards require could, depending on
+deployment environment, assist in request
+smuggling. The unhandled exception could cause
+excessive resource consumption on the application
+server and/or its logging facilities. This
+vulnerability exists due to an incomplete fix for
+CVE-2023-47627. Version 3.9.2 fixes this
+vulnerability.'}}{'id': 'CVE-2024-24762', 'description': {'lang':
+'en', 'value': "`python-multipart` is a streaming
+multipart parser for Python. When using form data,
+`python-multipart` uses a Regular Expression to
+parse the HTTP `Content-Type` header, including
+options. An attacker could send a custom-made
+`Content-Type` option that is very difficult for
+the RegEx to process, consuming CPU resources and
+stalling indefinitely (minutes or more) while
+holding the main event loop. This means that
+process can't handle any more requests, leading to
+regular expression denial of service. This
+vulnerability has been patched in version
+0.0.7."}}{'id': 'CVE-2024-30251', 'description': {'lang':
+'en', 'value': 'aiohttp is an asynchronous HTTP
+client/server framework for asyncio and Python. In
+affected versions an attacker can send a specially
+crafted POST (multipart/form-data) request. When
+the aiohttp server processes it, the server will
+enter an infinite loop and be unable to process
+any further requests. An attacker can stop the
+application from serving requests after sending a
+single request. This issue has been addressed in
+version 3.9.4. Users are advised to upgrade. Users
+unable to upgrade may manually apply a patch to
+their systems. Please see the linked GHSA for
+instructions.'}}{'id': 'CVE-2024-37891', 'description': {'lang':
+'en', 'value': " urllib3 is a user-friendly HTTP
+client library for Python. When using urllib3's
+proxy support with `ProxyManager`, the `Proxy-
+Authorization` header is only sent to the
+configured proxy, as expected. However, when
+sending HTTP requests *without* using urllib3's
+proxy support, it's possible to accidentally
+configure the `Proxy-Authorization` header even
+though it won't have any effect as the request is
+not using a forwarding proxy or a tunneling proxy.
+In those cases, urllib3 doesn't treat the `Proxy-
+Authorization` HTTP header as one carrying
+authentication material and thus doesn't strip the
+header on cross-origin redirects. Because this is
+a highly unlikely scenario, we believe the
+severity of this vulnerability is low for almost
+all users. Out of an abundance of caution urllib3
+will automatically strip the `Proxy-Authorization`
+header during cross-origin redirects to avoid the
+small chance that users are doing this on
+accident. Users should use urllib3's proxy support
+or disable automatic redirects to achieve safe
+processing of the `Proxy-Authorization` header,
+but we still decided to strip the header by
+default in order to further protect users who
+aren't using the correct approach. We believe the
+number of usages affected by this advisory is low.
+It requires all of the following to be true to be
+exploited: 1. Setting the `Proxy-Authorization`
+header without using urllib3's built-in proxy
+support. 2. Not disabling HTTP redirects. 3.
+Either not using an HTTPS origin server or for the
+proxy or target origin to redirect to a malicious
+origin. Users are advised to update to either
+version 1.26.19 or version 2.2.2. Users unable to
+upgrade may use the `Proxy-Authorization` header
+with urllib3's `ProxyManager`, disable HTTP
+redirects using `redirects=False` when sending
+requests, or not user the `Proxy-Authorization`
+header as mitigations."}}{'id': 'CVE-2024-41671', 'description': {'lang':
+'en', 'value': 'Twisted is an event-based
+framework for internet applications, supporting
+Python 3.6+. The HTTP 1.0 and 1.1 server provided
+by twisted.web could process pipelined HTTP
+requests out-of-order, possibly resulting in
+information disclosure. This vulnerability is
+fixed in 24.7.0rc1.'}}{'id': 'CVE-2024-42353', 'description': {'lang':
+'en', 'value': "WebOb provides objects for HTTP
+requests and responses. When WebOb normalizes the
+HTTP Location header to include the request
+hostname, it does so by parsing the URL that the
+user is to be redirected to with Python's
+urlparse, and joining it to the base URL.
+`urlparse` however treats a `//` at the start of a
+string as a URI without a scheme, and then treats
+the next part as the hostname. `urljoin` will then
+use that hostname from the second part as the
+hostname replacing the original one from the
+request. This vulnerability is patched in WebOb
+version 1.8.8."}}{'id': 'CVE-2024-47084', 'description': {'lang':
+'en', 'value': 'Gradio is an open-source Python
+package designed for quick prototyping. This
+vulnerability is related to **CORS origin
+validation**, where the Gradio server fails to
+validate the request origin when a cookie is
+present. This allows an attacker’s website to make
+unauthorized requests to a local Gradio server.
+Potentially, attackers can upload files, steal
+authentication tokens, and access user data if the
+victim visits a malicious website while logged
+into Gradio. This impacts users who have deployed
+Gradio locally and use basic authentication. Users
+are advised to upgrade to `gradio>4.44` to address
+this issue. As a workaround, users can manually
+enforce stricter CORS origin validation by
+modifying the `CustomCORSMiddleware` class in
+their local Gradio server code. Specifically, they
+can bypass the condition that skips CORS
+validation for requests containing cookies to
+prevent potential exploitation.'}}{'id': 'CVE-2024-47165', 'description': {'lang':
+'en', 'value': 'Gradio is an open-source Python
+package designed for quick prototyping. This
+vulnerability relates to **CORS origin validation
+accepting a null origin**. When a Gradio server is
+deployed locally, the `localhost_aliases` variable
+includes "null" as a valid origin. This allows
+attackers to make unauthorized requests from
+sandboxed iframes or other sources with a null
+origin, potentially leading to data theft, such as
+user authentication tokens or uploaded files. This
+impacts users running Gradio locally, especially
+those using basic authentication. Users are
+advised to upgrade to `gradio>=5.0` to address
+this issue. As a workaround, users can manually
+modify the `localhost_aliases` list in their local
+Gradio deployment to exclude "null" as a valid
+origin. By removing this value, the Gradio server
+will no longer accept requests from sandboxed
+iframes or sources with a null origin, mitigating
+the potential for exploitation.'}}{'id': 'CVE-2024-47167', 'description': {'lang':
+'en', 'value': 'Gradio is an open-source Python
+package designed for quick prototyping. This
+vulnerability relates to **Server-Side Request
+Forgery (SSRF)** in the `/queue/join` endpoint.
+Gradio’s `async_save_url_to_cache` function allows
+attackers to force the Gradio server to send HTTP
+requests to user-controlled URLs. This could
+enable attackers to target internal servers or
+services within a local network and possibly
+exfiltrate data or cause unwanted internal
+requests. Additionally, the content from these
+URLs is stored locally, making it easier for
+attackers to upload potentially malicious files to
+the server. This impacts users deploying Gradio
+servers that use components like the Video
+component which involve URL fetching. Users are
+advised to upgrade to `gradio>=5` to address this
+issue.  As a workaround, users can disable or
+heavily restrict URL-based inputs in their Gradio
+applications to trusted domains only.
+Additionally, implementing stricter URL validation
+(such as allowinglist-based validation) and
+ensuring that local or internal network addresses
+cannot be requested via the `/queue/join` endpoint
+can help mitigate the risk of SSRF attacks.'}}{'id': 'CVE-2024-47868', 'description': {'lang':
+'en', 'value': 'Gradio is an open-source Python
+package designed for quick prototyping. This is a
+**data validation vulnerability** affecting
+several Gradio components, which allows arbitrary
+file leaks through the post-processing step.
+Attackers can exploit these components by crafting
+requests that bypass expected input constraints.
+This issue could lead to sensitive files being
+exposed to unauthorized users, especially when
+combined with other vulnerabilities, such as issue
+TOB-GRADIO-15. The components most at risk are
+those that return or handle file data. Vulnerable
+Components: 1. **String to FileData:**
+DownloadButton, Audio, ImageEditor, Video,
+Model3D, File, UploadButton. 2. **Complex data to
+FileData:** Chatbot, MultimodalTextbox. 3.
+**Direct file read in preprocess:** Code. 4.
+**Dictionary converted to FileData:** ParamViewer,
+Dataset. Exploit Scenarios: 1. A developer creates
+a Dropdown list that passes values to a
+DownloadButton. An attacker bypasses the allowed
+inputs, sends an arbitrary file path (like
+`/etc/passwd`), and downloads sensitive files. 2.
+An attacker crafts a malicious payload in a
+ParamViewer component, leaking sensitive files
+from a server through the arbitrary file leak.
+This issue has been resolved in `gradio>5.0`.
+Upgrading to the latest version will mitigate this
+vulnerability. There are no known workarounds for
+this vulnerability.'}}{'id': 'CVE-2024-47869', 'description': {'lang':
+'en', 'value': 'Gradio is an open-source Python
+package designed for quick prototyping. This
+vulnerability involves a **timing attack** in the
+way Gradio compares hashes for the
+`analytics_dashboard` function. Since the
+comparison is not done in constant time, an
+attacker could exploit this by measuring the
+response time of different requests to infer the
+correct hash byte-by-byte. This can lead to
+unauthorized access to the analytics dashboard,
+especially if the attacker can repeatedly query
+the system with different keys. Users are advised
+to upgrade to `gradio>4.44` to mitigate this
+issue. To mitigate the risk before applying the
+patch, developers can manually patch the
+`analytics_dashboard` dashboard to use a
+**constant-time comparison** function for
+comparing sensitive values, such as hashes.
+Alternatively, access to the analytics dashboard
+can be disabled.'}}{'id': 'CVE-2024-49768', 'description': {'lang':
+'en', 'value': "Waitress is a Web Server Gateway
+Interface server for Python 2 and 3. A remote
+client may send a request that is exactly
+recv_bytes (defaults to 8192) long, followed by a
+secondary request using HTTP pipelining. When
+request lookahead is disabled (default) we won't
+read any more requests, and when the first request
+fails due to a parsing error, we simply close the
+connection. However when request lookahead is
+enabled, it is possible to process and receive the
+first request, start sending the error message
+back to the client while we read the next request
+and queue it. This will allow the secondary
+request to be serviced by the worker thread while
+the connection should be closed. Waitress 3.0.1
+fixes the race condition. As a workaround, disable
+channel_request_lookahead, this is set to 0 by
+default disabling this feature."}}{'id': 'CVE-2024-52303', 'description': {'lang':
+'en', 'value': 'aiohttp is an asynchronous HTTP
+client/server framework for asyncio and Python. In
+versions starting with 3.10.6 and prior to
+3.10.11, a memory leak can occur when a request
+produces a MatchInfoError. This was caused by
+adding an entry to a cache on each request, due to
+the building of each MatchInfoError producing a
+unique cache entry. An attacker may be able to
+exhaust the memory resources of a server by
+sending a substantial number (100,000s to
+millions) of such requests. Those who use any
+middlewares with aiohttp.web should upgrade to
+version 3.10.11 to receive a patch.'}}{'id': 'CVE-2024-52804', 'description': {'lang':
+'en', 'value': 'Tornado is a Python web framework
+and asynchronous networking library. The algorithm
+used for parsing HTTP cookies in Tornado versions
+prior to 6.4.2 sometimes has quadratic complexity,
+leading to excessive CPU consumption when parsing
+maliciously-crafted cookie headers. This parsing
+occurs in the event loop thread and may block the
+processing of other requests. Version 6.4.2 fixes
+the issue.'}}{'id': 'CVE-2024-53981', 'description': {'lang':
+'en', 'value': 'python-multipart is a streaming
+multipart parser for Python. When parsing form
+data, python-multipart skips line breaks (CR \\r
+or LF \\n) in front of the first boundary and any
+tailing bytes after the last boundary. This
+happens one byte at a time and emits a log event
+each time, which may cause excessive logging for
+certain inputs. An attacker could abuse this by
+sending a malicious request with lots of data
+before the first or after the last boundary,
+causing high CPU load and stalling the processing
+thread for a significant amount of time. In case
+of ASGI application, this could stall the event
+loop and prevent other requests from being
+processed, resulting in a denial of service (DoS).
+This vulnerability is fixed in 0.0.18.'}}{'id': 'CVE-2025-24370', 'description': {'lang':
+'en', 'value': 'Django-Unicorn adds modern
+reactive component functionality to Django
+templates. Affected versions of Django-Unicorn are
+vulnerable to python class pollution
+vulnerability. The vulnerability arises from the
+core functionality `set_property_value`, which can
+be remotely triggered by users by crafting
+appropriate component requests and feeding in
+values of second and third parameter to the
+vulnerable function, leading to arbitrary changes
+to the python runtime status. With this finding at
+least five ways of vulnerability exploitation have
+been observed, stably resulting in Cross-Site
+Scripting (XSS), Denial of Service (DoS), and
+Authentication Bypass attacks in almost every
+Django-Unicorn-based application. This issue has
+been addressed in version 0.62.0 and all users are
+advised to upgrade. There are no known workarounds
+for this vulnerability.'}}{'id': 'CVE-2025-1077', 'description': {'lang':
+'en', 'value': 'A security vulnerability has been
+identified in the IBL Software Engineering Visual
+Weather and derived products (NAMIS, Aero Weather,
+Satellite Weather).\xa0The vulnerability is
+present in the Product Delivery Service (PDS)
+component in specific server configurations where
+the PDS pipeline utilizes the IPDS pipeline with
+Message Editor Output Filters enabled.\n\nA
+remote\xa0unauthenticated\n\nattacker can exploit
+this vulnerability to send unauthenticated
+requests to execute the IPDS\xa0pipeline\xa0with
+specially crafted Form Properties, enabling remote
+execution of arbitrary Python code.\xa0This
+vulnerability could lead to a full system
+compromise of the affected server, particularly if
+Visual Weather services\xa0are run under a
+privileged user account—contrary to the documented
+installation best practices.\n\n\n\nUpgrade to the
+patched versions 7.3.10 (or higher), 8.6.0 (or
+higher).'}}{'id': 'CVE-2025-24836', 'description': {'lang':
+'en', 'value': "With a specially crafted Python
+script, an attacker could send \ncontinuous
+startMeasurement commands over an unencrypted
+Bluetooth \nconnection to the affected device.
+This would prevent the device from \nconnecting to
+a clinician's app to take patient readings and
+ostensibly \nflood it with requests, resulting in
+a denial-of-service condition."}}{'id': 'CVE-2024-10252', 'description': {'lang':
+'en', 'value': 'A vulnerability in langgenius/dify
+versions <=v0.9.1 allows for code injection via
+internal SSRF requests in the Dify sandbox
+service. This vulnerability enables an attacker to
+execute arbitrary Python code with root privileges
+within the sandbox environment, potentially
+leading to the deletion of the entire sandbox
+service and causing irreversible damage.'}}{'id': 'CVE-2025-31490', 'description': {'lang':
+'en', 'value': 'AutoGPT is a platform that allows
+users to create, deploy, and manage continuous
+artificial intelligence agents that automate
+complex workflows. Prior to 0.6.1, AutoGPT allows
+SSRF due to DNS Rebinding in requests wrapper.
+AutoGPT is built with a wrapper around Python\'s
+requests library, hardening the application
+against SSRF. The code for this wrapper can be
+found in
+autogpt_platform/backend/backend/util/request.py.
+The requested hostname of a URL which is being
+requested is validated, ensuring that it does not
+resolve to any local ipv4 or ipv6 addresses.
+However, this check is not sufficient, as a DNS
+server may initially respond with a non-blocked
+address, with a TTL of 0. This means that the
+initial resolution would appear as a non-blocked
+address. In this case, validate_url() will return
+the url as successful. After validate_url() has
+successfully returned the url, the url is then
+passed to the real request() function. When the
+real request() function is called with the
+validated url, request() will once again resolve
+the address of the hostname, because the record
+will not have been cached (due to TTL 0). This
+resolution may be in the "invalid range". This
+type of attack is called a "DNS Rebinding Attack".
+This vulnerability is fixed in 0.6.1.'}}{'id': 'CVE-2025-31491', 'description': {'lang':
+'en', 'value': 'AutoGPT is a platform that allows
+users to create, deploy, and manage continuous
+artificial intelligence agents that automate
+complex workflows. Prior to 0.6.1, AutoGPT allows
+of leakage of cross-domain cookies and protected
+headers in requests redirect. AutoGPT uses a
+wrapper around the requests python library,
+located in
+autogpt_platform/backend/backend/util/request.py.
+In this wrapper, redirects are specifically NOT
+followed for the first request. If the wrapper is
+used with allow_redirects set to True (which is
+the default), any redirect is not followed by the
+initial request, but rather re-requested by the
+wrapper using the new location. However, there is
+a fundamental flaw in manually re-requesting the
+new location: it does not account for security-
+sensitive headers which should not be sent cross-
+origin, such as the Authorization and Proxy-
+Authorization header, and cookies. For example in
+autogpt_platform/backend/backend/blocks/github/_ap
+i.py, an Authorization header is set when
+retrieving data from the GitHub API. However, if
+GitHub suffers from an open redirect vulnerability
+(such as the made-up example of https://api.github
+.com/repos/{owner}/{repo}/issues/comments/{comment
+_id}/../../../../../redirect/?url=https://joshua.h
+u/), and the script can be coerced into visiting
+it with the Authorization header, the GitHub
+credentials in the Authorization header will be
+leaked. This allows leaking auth headers and
+private cookies. This vulnerability is fixed in
+0.6.1.'}}{'id': 'CVE-2025-50181', 'description': {'lang':
+'en', 'value': 'urllib3 is a user-friendly HTTP
+client library for Python. Prior to 2.5.0, it is
+possible to disable redirects for all requests by
+instantiating a PoolManager and specifying retries
+in a way that disable redirects. By default,
+requests and botocore users are not affected. An
+application attempting to mitigate SSRF or open
+redirect vulnerabilities by disabling redirects at
+the PoolManager level will remain vulnerable. This
+issue has been patched in version 2.5.0.'}}{'id': 'CVE-2025-50182', 'description': {'lang':
+'en', 'value': 'urllib3 is a user-friendly HTTP
+client library for Python. Starting in version
+2.2.0 and prior to 2.5.0, urllib3 does not control
+redirects in browsers and Node.js. urllib3
+supports being used in a Pyodide runtime utilizing
+the JavaScript Fetch API or falling back on
+XMLHttpRequest. This means Python libraries can be
+used to make HTTP requests from a browser or
+Node.js. Additionally, urllib3 provides a
+mechanism to control redirects, but the retries
+and redirect parameters are ignored with Pyodide;
+the runtime itself determines redirect behavior.
+This issue has been patched in version 2.5.0.'}}{'id': 'CVE-2025-48945', 'description': {'lang':
+'en', 'value': 'pycares is a Python module which
+provides an interface to c-ares. c-ares is a C
+library that performs DNS requests and name
+resolutions asynchronously. Prior to version
+4.9.0, pycares is vulnerable to a use-after-free
+condition that occurs when a Channel object is
+garbage collected while DNS queries are still
+pending. This results in a fatal Python error and
+interpreter crash. The vulnerability has been
+fixed in pycares 4.9.0 by implementing a safe
+channel destruction mechanism.'}}{'id': 'CVE-2025-53366', 'description': {'lang':
+'en', 'value': 'The MCP Python SDK, called `mcp`
+on PyPI, is a Python implementation of the Model
+Context Protocol (MCP). Prior to version 1.9.4, a
+validation error in the MCP SDK can cause an
+unhandled exception when processing malformed
+requests, resulting in service unavailability (500
+errors) until manually restarted. Impact may vary
+depending on the deployment conditions, and
+presence of infrastructure-level resilience
+measures. Version 1.9.4 contains a patch for the
+issue.'}}{'id': 'CVE-2025-54381', 'description': {'lang':
+'en', 'value': 'BentoML is a Python library for
+building online serving systems optimized for AI
+apps and model inference. In versions 1.4.0 until
+1.4.19, the file upload processing system contains
+an SSRF vulnerability that allows unauthenticated
+remote attackers to force the server to make
+arbitrary HTTP requests. The vulnerability stems
+from the multipart form data and JSON request
+handlers, which automatically download files from
+user-provided URLs without validating whether
+those URLs point to internal network addresses,
+cloud metadata endpoints, or other restricted
+resources. The documentation explicitly promotes
+this URL-based file upload feature, making it an
+intended design that exposes all deployed services
+to SSRF attacks by default. Version 1.4.19
+contains a patch for the issue.'}}{'id': 'CVE-2025-61773', 'description': {'lang':
+'en', 'value': "pyLoad is a free and open-source
+download manager written in Python. In versions
+prior to 0.5.0b3.dev91, pyLoad web interface
+contained insufficient input validation in both
+the Captcha script endpoint and the Click'N'Load
+(CNL) Blueprint. This flaw allowed untrusted user
+input to be processed unsafely, which could be
+exploited by an attacker to inject arbitrary
+content into the web UI or manipulate request
+handling. The vulnerability could lead to client-
+side code execution (XSS) or other unintended
+behaviors when a malicious payload is submitted.
+user-supplied parameters from HTTP requests were
+not adequately validated or sanitized before being
+passed into the application logic and response
+generation. This allowed crafted input to alter
+the expected execution flow. CNL (Click'N'Load)
+blueprint exposed unsafe handling of untrusted
+parameters in HTTP requests. The application did
+not consistently enforce input validation or
+encoding, making it possible for an attacker to
+craft malicious requests. Version 0.5.0b3.dev91
+contains a patch for the issue."}}{'id': 'CVE-2025-66416', 'description': {'lang':
+'en', 'value': 'The MCP Python SDK, called `mcp`
+on PyPI, is a Python implementation of the Model
+Context Protocol (MCP). Prior to version 1.23.0,
+tThe Model Context Protocol (MCP) Python SDK does
+not enable DNS rebinding protection by default for
+HTTP-based servers. When an HTTP-based MCP server
+is run on localhost without authentication using
+FastMCP with streamable HTTP or SSE transport, and
+has not configured TransportSecuritySettings, a
+malicious website could exploit DNS rebinding to
+bypass same-origin policy restrictions and send
+requests to the local MCP server. This could allow
+an attacker to invoke tools or access resources
+exposed by the MCP server on behalf of the user in
+those limited circumstances. Note that running
+HTTP-based MCP servers locally without
+authentication is not recommended per MCP security
+best practices. This issue does not affect servers
+using stdio transport. This vulnerability is fixed
+in 1.23.0.'}}{'id': 'CVE-2025-69229', 'description': {'lang':
+'en', 'value': 'AIOHTTP is an asynchronous HTTP
+client/server framework for asyncio and Python. In
+versions 3.13.2 and below, handling of chunked
+messages can result in excessive blocking CPU
+usage when receiving a large number of chunks. If
+an application makes use of the request.read()
+method in an endpoint, it may be possible for an
+attacker to cause the server to spend a moderate
+amount of blocking CPU time (e.g. 1 second) while
+processing the request. This could potentially
+lead to DoS as the server would be unable to
+handle other requests during that time. This issue
+is fixed in version 3.13.3.'}}{'id': 'CVE-2026-21441', 'description': {'lang':
+'en', 'value': "urllib3 is an HTTP client library
+for Python. urllib3's streaming API is designed
+for the efficient handling of large HTTP responses
+by reading the content in chunks, rather than
+loading the entire response body into memory at
+once. urllib3 can perform decoding or
+decompression based on the HTTP `Content-Encoding`
+header (e.g., `gzip`, `deflate`, `br`, or `zstd`).
+When using the streaming API, the library
+decompresses only the necessary bytes, enabling
+partial content consumption. Starting in version
+1.22 and prior to version 2.6.3, for HTTP redirect
+responses, the library would read the entire
+response body to drain the connection and
+decompress the content unnecessarily. This
+decompression occurred even before any read
+methods were called, and configured read limits
+did not restrict the amount of decompressed data.
+As a result, there was no safeguard against
+decompression bombs. A malicious server could
+exploit this to trigger excessive resource
+consumption on the client. Applications and
+libraries are affected when they stream content
+from untrusted sources by setting
+`preload_content=False` when they do not disable
+redirects. Users should upgrade to at least
+urllib3 v2.6.3, in which the library does not
+decode content of redirect responses when
+`preload_content=False`. If upgrading is not
+immediately possible, disable redirects by setting
+`redirect=False` for requests to untrusted
+source."}}{'id': 'CVE-2026-22779', 'description': {'lang':
+'en', 'value': 'BlackSheep is an asynchronous web
+framework to build event based web applications
+with Python. Prior to 2.4.6, the HTTP Client
+implementation in BlackSheep is vulnerable to CRLF
+injection. Missing headers validation makes it
+possible for an attacker to modify the HTTP
+requests (e.g. insert a new header) or even create
+a new HTTP request. Exploitation requires
+developers to pass unsanitized user input directly
+into headers.The server part is not affected
+because BlackSheep delegates to an underlying ASGI
+server handling of response headers. This
+vulnerability is fixed in 2.4.6.'}}{'id': 'CVE-2026-24489', 'description': {'lang':
+'en', 'value': 'Gakido is a Python HTTP client
+focused on browser impersonation and anti-bot
+evasion. A vulnerability was discovered in Gakido
+prior to version 0.1.1 that allowed HTTP header
+injection through CRLF (Carriage Return Line Feed)
+sequences in user-supplied header values and
+names. When making HTTP requests with user-
+controlled header values containing `\\r\\n`
+(CRLF), `\\n` (LF), or `\\x00` (null byte)
+characters, an attacker could inject arbitrary
+HTTP headers into the request. The fix in version
+0.1.1 adds a `_sanitize_header()` function that
+strips `\\r`, `\\n`, and `\\x00` characters from
+both header names and values before they are
+included in HTTP requests.'}}{'id': 'CVE-2026-24779', 'description': {'lang':
+'en', 'value': "vLLM is an inference and serving
+engine for large language models (LLMs). Prior to
+version 0.14.1, a Server-Side Request Forgery
+(SSRF) vulnerability exists in the
+`MediaConnector` class within the vLLM project's
+multimodal feature set. The load_from_url and
+load_from_url_async methods obtain and process
+media from URLs provided by users, using different
+Python parsing libraries when restricting the
+target host. These two parsing libraries have
+different interpretations of backslashes, which
+allows the host name restriction to be bypassed.
+This allows an attacker to coerce the vLLM server
+into making arbitrary requests to internal network
+resources. This vulnerability is particularly
+critical in containerized environments like
+`llm-d`, where a compromised vLLM pod could be
+used to scan the internal network, interact with
+other pods, and potentially cause denial of
+service or access sensitive data. For example, an
+attacker could make the vLLM pod send malicious
+requests to an internal `llm-d` management
+endpoint, leading to system instability by falsely
+reporting metrics like the KV cache state. Version
+0.14.1 contains a patch for the issue."}}{'id': 'CVE-2026-1778', 'description': {'lang':
+'en', 'value': 'Amazon SageMaker Python SDK before
+v3.1.1 or v2.256.0 disables TLS certificate
+verification for HTTPS connections made by the
+service when a Triton Python model is imported,
+incorrectly allowing for requests with invalid and
+self-signed certificates to succeed.'}}{'id': 'CVE-2026-25580', 'description': {'lang':
+'en', 'value': "Pydantic AI is a Python agent
+framework for building applications and workflows
+with Generative AI. From 0.0.26 to before 1.56.0,
+aServer-Side Request Forgery (SSRF) vulnerability
+exists in Pydantic AI's URL download
+functionality. When applications accept message
+history from untrusted sources, attackers can
+include malicious URLs that cause the server to
+make HTTP requests to internal network resources,
+potentially accessing internal services or cloud
+credentials. This vulnerability only affects
+applications that accept message history from
+external users. This vulnerability is fixed in
+1.56.0."}}{'id': 'CVE-2026-26953', 'description': {'lang':
+'en', 'value': 'Pi-hole Admin Interface is a web
+interface for managing Pi-hole, a network-level ad
+and internet tracker blocking application.
+Versions 6.0 and above have a Stored HTML
+Injection vulnerability in the active sessions
+table located on the API settings page, allowing
+an attacker with valid credentials to inject
+arbitrary HTML code that will be rendered in the
+browser of any administrator who visits the active
+sessions page. The rowCallback function contains
+the value data.x_forwarded_for, which is directly
+concatenated into an HTML string and inserted into
+the DOM using jQuery’s .html() method. This method
+interprets the content as HTML, which means that
+any HTML tags present in the value will be parsed
+and rendered by the browser. An attacker can use
+common tools such as curl, wget, Python requests,
+Burp Suite, or even JavaScript fetch() to send an
+authentication request with an X-Forwarded-For
+header that contains malicious HTML code instead
+of a legitimate IP address. Since Pi-hole
+implements a Content Security Policy (CSP) that
+blocks inline JavaScript, the impact is limited to
+pure HTML injection without the ability to execute
+scripts. This issue has been fixed in version
+6.4.1.'}}{'id': 'CVE-2026-28416', 'description': {'lang':
+'en', 'value': "Gradio is an open-source Python
+package designed for quick prototyping. Prior to
+version 6.6.0, a Server-Side Request Forgery
+(SSRF) vulnerability in Gradio allows an attacker
+to make arbitrary HTTP requests from a victim's
+server by hosting a malicious Gradio Space. When a
+victim application uses `gr.load()` to load an
+attacker-controlled Space, the malicious
+`proxy_url` from the config is trusted and added
+to the allowlist, enabling the attacker to access
+internal services, cloud metadata endpoints, and
+private networks through the victim's
+infrastructure. Version 6.6.0 fixes the issue."}}{'id': 'CVE-2026-33332', 'description': {'lang':
+'en', 'value': "NiceGUI is a Python-based UI
+framework. Prior to version 3.9.0, NiceGUI's
+app.add_media_file() and app.add_media_files()
+media routes accept a user-controlled query
+parameter that influences how files are read
+during streaming. The parameter is passed to the
+range-response implementation without validation,
+allowing an attacker to bypass chunked streaming
+and force the server to load entire files into
+memory at once. With large media files and
+concurrent requests, this can lead to excessive
+memory consumption, degraded performance, or
+denial of service. This issue has been patched in
+version 3.9.0."}}{'id': 'CVE-2026-32871', 'description': {'lang':
+'en', 'value': 'FastMCP is a Pythonic way to build
+MCP servers and clients. Prior to version 3.2.0,
+the OpenAPIProvider in FastMCP exposes internal
+APIs to MCP clients by parsing OpenAPI
+specifications. The RequestDirector class is
+responsible for constructing HTTP requests to the
+backend service. A vulnerability exists in the
+_build_url() method. When an OpenAPI operation
+defines path parameters (e.g.,
+/api/v1/users/{user_id}), the system directly
+substitutes parameter values into the URL template
+string without URL-encoding. Subsequently,
+urllib.parse.urljoin() resolves the final URL.
+Since urljoin() interprets ../ sequences as
+directory traversal, an attacker controlling a
+path parameter can perform path traversal attacks
+to escape the intended API prefix and access
+arbitrary backend endpoints. This results in
+authenticated SSRF, as requests are sent with the
+authorization headers configured in the MCP
+provider. This issue has been patched in version
+3.2.0.'}}{'id': 'CVE-2026-33752', 'description': {'lang':
+'en', 'value': 'curl_cffi is the a Python binding
+for curl. Prior to 0.15.0, curl_cffi does not
+restrict requests to internal IP ranges, and
+follows redirects automatically via the underlying
+libcurl. Because of this, an attacker-controlled
+URL can redirect requests to internal services
+such as cloud metadata endpoints. In addition,
+curl_cffi’s TLS impersonation feature can make
+these requests appear as legitimate browser
+traffic, which may bypass certain network
+controls. This vulnerability is fixed in
+0.15.0.'}}{'id': 'CVE-2026-35187', 'description': {'lang':
+'en', 'value': 'pyLoad is a free and open-source
+download manager written in Python. In
+0.5.0b3.dev96 and earlier, the parse_urls API
+function in src/pyload/core/api/__init__.py
+fetches arbitrary URLs server-side via
+get_url(url) (pycurl) without any URL validation,
+protocol restriction, or IP blacklist. An
+authenticated user with ADD permission can make
+HTTP/HTTPS requests to internal network resources
+and cloud metadata endpoints, read local files via
+file:// protocol (pycurl reads the file server-
+side), interact with internal services via
+gopher:// and dict:// protocols, and enumerate
+file existence via error-based oracle (error 37 vs
+empty response).'}}{'id': 'CVE-2026-40072', 'description': {'lang':
+'en', 'value': 'web3.py allows you to interact
+with the Ethereum blockchain using Python. From
+6.0.0b3 to before 7.15.0 and 8.0.0b2, web3.py
+implements CCIP Read / OffchainLookup (EIP-3668)
+by performing HTTP requests to URLs supplied by
+smart contracts in
+offchain_lookup_payload["urls"]. The
+implementation uses these contract-supplied URLs
+directly (after {sender} / {data} template
+substitution) without any destination validation.
+CCIP Read is enabled by default
+(global_ccip_read_enabled = True on all
+providers), meaning any application using
+web3.py\'s .call() method is exposed without
+explicit opt-in. This results in Server-Side
+Request Forgery (SSRF) when web3.py is used in
+backend services, indexers, APIs, or any
+environment that performs eth_call / .call()
+against untrusted or user-supplied contract
+addresses. A malicious contract can force the
+web3.py process to issue HTTP requests to
+arbitrary destinations, including internal network
+services and cloud metadata endpoints. This
+vulnerability is fixed in 7.15.0 and 8.0.0b2.'}}{'id': 'CVE-2026-40316', 'description': {'lang':
+'en', 'value': "OWASP BLT is a QA testing and
+vulnerability disclosure platform that encompasses
+websites, apps, git repositories, and more.
+Versions prior to 2.1.1 contain an RCE
+vulnerability in the .github/workflows/regenerate-
+migrations.yml workflow. The workflow uses the
+pull_request_target trigger to run with full
+GITHUB_TOKEN write permissions, copies attacker-
+controlled files from untrusted pull requests into
+the trusted runner workspace via git show, and
+then executes python manage.py makemigrations,
+which imports Django model modules including
+attacker-controlled website/models.py at runtime.
+Any module-level Python code in the attacker's
+models.py is executed during import, enabling
+arbitrary code execution in the privileged CI
+environment with access to GITHUB_TOKEN and
+repository secrets. The attack is triggerable by
+any external contributor who can open a pull
+request, provided a maintainer applies the
+regenerate-migrations label, potentially leading
+to secret exfiltration, repository compromise, and
+supply chain attacks. A patch for this issue is
+expected to be released in version 2.1.1."}}{'id': 'CVE-2026-40347', 'description': {'lang':
+'en', 'value': 'Python-Multipart is a streaming
+multipart parser for Python. Versions prior to
+0.0.26 have a denial of service vulnerability when
+parsing crafted `multipart/form-data` requests
+with large preamble or epilogue sections. Upgrade
+to version 0.0.26 or later, which skips ahead to
+the next boundary candidate when processing
+leading CR/LF data and immediately discards
+epilogue data after the closing boundary.'}}{'id': 'CVE-2026-41133', 'description': {'lang':
+'en', 'value': "pyLoad is a free and open-source
+download manager written in Python. Versions up to
+and including 0.5.0b3.dev97 cache `role` and
+`permission` in the session at login and continues
+to authorize requests using these cached values,
+even after an admin changes the user's
+role/permissions in the database. As a result, an
+already logged-in user can keep old (revoked)
+privileges until logout/session expiry, enabling
+continued privileged actions. This is a core
+authorization/session-consistency issue and is not
+resolved by toggling an optional security feature.
+Commit e95804fb0d06cbb07d2ba380fc494d9ff89b68c1
+contains a fix for the issue."}}{'id': 'CVE-2026-41873', 'description': {'lang':
+'en', 'value': '** UNSUPPORTED WHEN ASSIGNED **
+Inconsistent Interpretation of HTTP Requests
+(\'HTTP Request/Response Smuggling\')
+vulnerability in Pony Mail leading to admin
+account takeover.\n\nThis issue affects all
+versions of the Lua implementation of Pony Mail.
+There is a Python implementation under development
+under the name "Pony Mail Foal" that is not
+affected by this issue, but hasn\'t been released
+yet.\n\nAs the Lua implementation of this project
+is retired, we do not plan to release a version
+that fixes this issue. Users are recommended to
+find an alternative or restrict access to the
+instance to trusted users.\n\nNOTE: This
+vulnerability only affects products that are no
+longer supported by the maintainer.'}}{'id': 'CVE-2026-7466', 'description': {'lang':
+'en', 'value': 'AgentFlow contains an arbitrary
+code execution vulnerability that allows attackers
+to execute local Python pipeline files by
+supplying a user-controlled pipeline_path
+parameter to the POST /api/runs and POST
+/api/runs/validate endpoints. Attackers can induce
+requests to the local AgentFlow API to load and
+execute existing Python pipeline files on disk,
+resulting in code execution in the context of the
+user running AgentFlow.'}}{'id': 'CVE-2026-40110', 'description': {'lang':
+'en', 'value': "Jupyter Server is the backend for
+Jupyter web applications. In versions 2.17.0 and
+earlier, the Origin header validation uses
+Python's re.match() to check incoming origins
+against the allow_origin_pat configuration value.
+Because re.match() only anchors at the start of
+the string and does not require a full match, a
+pattern intended to match only a trusted domain
+(e.g., trusted.example.com) will also match any
+origin that begins with that domain followed by
+additional characters (e.g.,
+trusted.example.com.evil.com). An attacker who
+controls such a domain can bypass the CORS origin
+restriction and make cross-origin requests to the
+Jupyter Server API from an untrusted site. This
+issue has been fixed in version 2.18.0."}}{'id': 'CVE-2026-42351', 'description': {'lang':
+'en', 'value': "pygeoapi is a Python server
+implementation of the OGC API suite of standards.
+From version 0.23.0 to before version 0.23.3, a
+raw string path concatenation vulnerability in
+pygeoapi's STAC FileSystemProvider plugin can
+allow for requests to STAC collection based
+collections to expose directories without
+authentication. The issue manifests when pygeoapi
+is deployed without a proxy or web front end that
+would normalize URLs with .. values, along with a
+resource of type stac-collection defined in
+configuration. This issue has been patched in
+version 0.23.3."}}{'id': 'CVE-2026-42352', 'description': {'lang':
+'en', 'value': 'pygeoapi is a Python server
+implementation of the OGC API suite of standards.
+From version 0.23.0 to before version 0.23.3, OGC
+API  process execution requests can use the
+subscriber object to requests to internal HTTP
+services. This issue has been patched in version
+0.23.3.'}}{'id': 'CVE-2026-44502', 'description': {'lang':
+'en', 'value': 'Bugsink is a self-hosted error
+tracking tool. Prior to 2.1.3, Bugsink’s webhook
+URL validation could be (partially) bypassed
+because of a mismatch in URL parsing. The original
+validation logic parsed webhook URLs with Python’s
+urllib.parse.urlparse, then sent the request with
+requests.post. For malformed inputs involving
+backslashes and @, those components can disagree
+about where the authority ends and which hostname
+is the real target. A URL may therefore appear to
+target an allowlisted public hostname during
+validation, while the HTTP client actually
+connects to a different host. This vulnerability
+is fixed in 2.1.3.'}}{'id': 'CVE-2026-48524', 'description': {'lang':
+'en', 'value': "PyJWT is a JSON Web Token
+implementation in Python. Prior to 2.13.0,
+PyJWKClient.get_signing_key() forces a fresh HTTP
+request to the JWKS endpoint for every JWT with an
+unknown kid value, with no rate limiting. Since
+kid comes from the unverified token header, an
+attacker can trigger unlimited outbound requests.
+The vulnerability surfaces only when a JWKS fetch
+fails; an attacker can attempt to provoke that
+with sustained unknown-kid traffic, but the
+outcome depends on upstream JWKS-endpoint behavior
+(rate limiting, transient errors) which is beyond
+the attacker's control. This vulnerability is
+fixed in 2.13.0."}}{'id': 'CVE-2026-45554', 'description': {'lang':
+'en', 'value': "NiceGUI is a Python-based UI
+framework. Prior to version 3.12.0, two FastAPI
+routes that serve per-component static assets in
+NiceGUI accept a sub-path parameter that may
+resolve to a directory rather than a file.
+Requests that resolve to a directory raise an
+unhandled RuntimeError inside Starlette's
+FileResponse, which Uvicorn writes to the server
+log as a full traceback. Because the routes are
+reachable without authentication, a remote
+attacker can amplify log volume and consume disk
+and log-pipeline capacity on any publicly
+reachable NiceGUI server. This issue has been
+patched in version 3.12.0."}}{'id': 'CVE-2026-47265', 'description': {'lang':
+'en', 'value': 'AIOHTTP is an asynchronous HTTP
+client/server framework for asyncio and Python.
+Prior to version 3.14.0, cookies set with the
+`cookies` parameter on requests are sent after
+following a cross-origin redirect. If a developer
+uses the `cookies` parameter on a per-request
+basis then sensitive data might be leaked to an
+attacker if they manage to control a redirect.
+Version 3.14.0 patches the issue. If unable to
+upgrade, using a `Cookie` header in the `headers`
+parameter is not vulnerable.'}}{'id': 'CVE-2026-43985', 'description': {'lang':
+'en', 'value': 'Tautulli is a Python based
+monitoring and tracking tool for Plex Media
+Server. Versions prior to 2.17.1 expose
+`configUpdate` as a state-changing administrator
+endpoint, but the route does not enforce `POST`
+and does not use any anti-CSRF token. In the
+default form and JWT-based authentication mode,
+the administrator session cookie is issued with
+`SameSite=Lax`, which still permits top-level
+cross-site navigation requests. An attacker can
+exploit this by luring a logged-in administrator
+to a malicious page that submits a cross-site
+request to `/configUpdate` and overwrites the
+local administrator username and password. The
+attacker can then sign in directly with the chosen
+credentials and take over the Tautulli
+administrative interface. Version 2.17.1 patches
+the issue.'}}{'id': 'CVE-2026-45758', 'description': {'lang':
+'en', 'value': 'Guardrails AI is a Python
+framework that helps build AI applications. On May
+11, 2026 at approximately 6:00 PM Pacific, an
+attacker published a malicious version of
+`guardrails-ai` (0.10.1) to PyPI. Aany user who
+installed `guardrails-ai==0.10.1` from PyPI on May
+11, 2026 may be affected. Security researchers
+identified the malicious package within
+approximately 2 hours of publication, and PyPI
+quarantined the repository. Based on our
+telemetry, Guardrails AI maintainers have observed
+no requests to Guardrails AI infrastructure
+originating from the malicious 0.10.1 version, and
+a review of system and access logs has produced no
+evidence of user data exfiltration through their
+systems. Users should upgrade to version 0.10.2 or
+downgrade to version 0.10.0, both of which are
+unaffected. Those who installed version 0.10.1
+should rotate any credentials accessible from
+their machine (GitHub PATs, cloud provider keys,
+package registry tokens, API keys) and audit their
+GitHub account for unauthorized workflows or
+repositories.'}}{'id': 'CVE-2026-47157', 'description': {'lang':
+'en', 'value': "aiograpi is an asynchronous
+Instagram API for Python. aiograpi versions before
+0.9.10 accepted server-supplied signup challenge
+paths and used them to build request URLs before
+validating that the paths were relative Instagram
+API paths. If an attacker can influence a
+challenge response, for example through a local
+network, DNS, or proxy compromise, challenge
+handling requests could be sent outside the
+intended Instagram host with the client's existing
+session headers. Version 0.9.10 validates
+challenge paths before building URLs, solving
+captcha challenges, or submitting phone/SMS
+challenge forms."}}
+
+A total of 2 cves for the numpy import.
+
+Contextual Usage: ['Line 5: import numpy \n']
+
+Vulnerabilities:
+{'id': 'CVE-2019-6446', 'description': {'lang':
+'en', 'value': 'An issue was discovered in NumPy
+before 1.16.3. It uses the pickle Python module
+unsafely, which allows remote attackers to execute
+arbitrary code via a crafted serialized object, as
+demonstrated by a numpy.load call. NOTE: third
+parties dispute this issue because it is a
+behavior that might have legitimate applications
+in (for example) loading serialized Python object
+arrays from trusted and authenticated sources.'}}{'id': 'CVE-2021-33430', 'description': {'lang':
+'en', 'value': 'A Buffer Overflow vulnerability
+exists in NumPy 1.9.x in the
+PyArray_NewFromDescr_int function of ctors.c when
+specifying arrays of large dimensions (over 32)
+from Python code, which could let a malicious user
+cause a Denial of Service. NOTE: The vendor does
+not agree this is a vulneraility; In (very
+limited) circumstances a user may be able provoke
+the buffer overflow, the user is most likely
+already privileged to at least provoke denial of
+service by exhausting memory. Triggering this
+further requires the use of uncommon API
+(complicated structured dtypes), which is very
+unlikely to be available to an unprivileged
+user'}}
