@@ -26,6 +26,7 @@ Face the Facts is a script that identifies package vulnerabilities within a give
 - [More on Using Text Wrap](https://www.w3schools.com/python/ref_module_textwrap.asp)
 - [Linking Stylesheets](https://www.w3schools.com/css/css_howto.asp)
 - [Adding Initial HTML Components](https://www.w3schools.com/tags/tag_doctype.asp)
+- [Working with Status Codes](https://www.geeksforgeeks.org/python/response-status_code-python-requests/)
 
 ---
 
@@ -164,11 +165,12 @@ sample python project with imports
 - I asked Gemini to show me how to supply an API key to an NVD GET request.
 - Give me a Python function that takes in a package name and returns the author and the latest version number of the package. If neither is found or there is an error, return `None` in the tuple output.
 - Clean up this README.md file to use unordered lists where there is just a series of bullets. If any other formatting is messed up or has syntax errors, please fix.
+- I queried Gemini to discover why "os" did not appear in the list of built in Python modules. The sample code provided showed me that I needed sys.stdlib_module_names. 
 
 ---
 
-## Other Tips
+## Adding an API KEY
 
-A NIST API key can be requested here:  
+To avoid unnecessary slowdowns, a NIST API key can be requested at the link below. Once you have received your API_KEY, add an .env file with a variable called API_KEY to the project. Here is the link:  
 https://nvd.nist.gov/developers/request-an-api-key
 ```

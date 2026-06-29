@@ -1,6 +1,7 @@
 import requests
 import os 
 import re
+import sys
 from dotenv import load_dotenv
 from pathlib import Path
 
@@ -98,7 +99,7 @@ def update_report(import_name, nicknames, context, cves):
         writable = open(REPORT_FILENAME,"a")
         writable.write(f'<h2>Import Name: {import_name}</h2>\n')
         if not nicknames == []:
-            writable.write(f'<p>References to this import as renames as {nicknames} in the files.</p>\n')
+            writable.write(f'<p>References to this import are renamed as {nicknames} in the files.</p>\n')
         writable.write(f"<p>There are {len(context)} references to this import in the project.</p>\n")
         writable.write(f"<p>There are {len(cves)} relevant cves associated with this import in the project.</p>\n")
         writable.write(f"<h3>Contextual Usage:</h3>\n") 
@@ -138,7 +139,8 @@ Give an package name conduct a search
 '''
 def query_nist_database(import_name):
     package_info = get_package_info(import_name)
-    if package_info[0] != None and package_info[1] != None:
+    if (package_info[0] != None) and (package_info[1] != None):
+        print("P: " + package_info[0] + package_info[1])
         BASE_URL = "https://services.nvd.nist.gov/rest/json/cpes/2.0"
         QUERY_PARAMETER = f"cpeName=cpe:2.3:a:{package_info[0]}:{import_name}:{package_info[1]}:*:*:*:*:python:*:*"
 
@@ -155,9 +157,13 @@ def query_nist_database(import_name):
     }
 
     FULL_URL = BASE_URL + "?" + QUERY_PARAMETER
-    response = requests.get(FULL_URL,headers=headers).json()
-    cve_data = extract_cves(response)
-    return cve_data 
+    response = requests.get(FULL_URL,headers=headers)
+
+    if (response.status_code == 200):
+        response = response.json()
+        cve_data = extract_cves(response)
+        return cve_data
+    return []
 
 '''
 Helper function for query_nist_database
@@ -218,6 +224,7 @@ def main():
     Your project probably has vulnerabilities.
     This tool can help by comparing imports in your project 
     against vulnerabilities in the NIST database. 
+    This tools assumes that you are using the lastest version of a given import.
     '''
     print(intro)
     print("*" * 50)
@@ -227,7 +234,7 @@ def main():
     if(project_dir == ''):
         print(f"Testing with default sample: ./sample_projects/simple_calculator")
         print("Please wait. This may take a while...")
-        project_dir = "./sample_projects/"
+        project_dir = "./sample_projects/other/"
     else:
         print(f"You typed: {project_dir}")
 
@@ -235,10 +242,13 @@ def main():
     paths = find_paths(project_dir)
     paths.append("./face_the_facts.py")
     import_names = find_imports(paths)
-    print(import_names)
+    print("Found these imports: " + str(import_names.keys()))
     setup_report()
-
     for i in import_names.keys():
+        if (i in sys.builtin_module_names) or (i in sys.stdlib_module_names):
+            print(f"Skipping built-in module {i}.")
+            continue
+        print(f"Investigating module {i}.")
         import_renames = [i] + import_names[i]
         context = get_context(paths, import_renames)
         cves = query_nist_database(i)
