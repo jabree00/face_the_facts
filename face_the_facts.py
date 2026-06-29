@@ -128,7 +128,7 @@ def get_context(paths, searchables):
         with open(path,"r") as f:
             for line in f: 
                 for s in searchables:
-                    search = re.search(s + "\.",line)
+                    search = re.search(s + "\\.",line)
                     if(search):
                         context.append(f"{filename}, Line {lineNumber}: {line}")
                 lineNumber += 1
