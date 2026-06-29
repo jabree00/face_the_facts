@@ -146,6 +146,7 @@ def query_nist_database(import_name):
 
     # Use keyword search as a fallback alternative
     else:
+        print(f"Import {import_name}: No NVD vendor found. Using keyword not cpe search.")
         BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"
         QUERY_PARAMETER = "keywordSearch=" + import_name + " python package"
 
@@ -274,9 +275,9 @@ def main():
     project_dir = input("\nType your project path: ") 
     print("*" * 50)
     if(project_dir == ''):
-        print(f"Testing with default sample: ./sample_projects/simple_calculator")
+        print(f"Testing with default sample: ./sample_projects/")
         print("Please wait. This may take a while...")
-        project_dir = "./sample_projects/other/"
+        project_dir = "./sample_projects/"
     else:
         print(f"You typed: {project_dir}")
 
