@@ -166,6 +166,7 @@ sample python project with imports
 - Give me a Python function that takes in a package name and returns the author and the latest version number of the package. If neither is found or there is an error, return `None` in the tuple output.
 - Clean up this README.md file to use unordered lists where there is just a series of bullets. If any other formatting is messed up or has syntax errors, please fix.
 - I queried Gemini to discover why "os" did not appear in the list of built in Python modules. The sample code provided showed me that I needed sys.stdlib_module_names. 
+- I queried Gemini to identify where the vendor name appears in PyPI. Gemini informed me that this info is not placed into a dedicated field in PyPI, so I asked: Give me a python function that will return that NVD assigned vendor name or None.
 
 ---
 

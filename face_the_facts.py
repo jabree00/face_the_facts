@@ -138,16 +138,16 @@ def get_context(paths, searchables):
 Give an package name conduct a search
 '''
 def query_nist_database(import_name):
-    package_info = get_package_info(import_name)
-    if (package_info[0] != None) and (package_info[1] != None):
-        print("P: " + package_info[0] + package_info[1])
+    version_info = get_version_info(import_name)
+    vendor_name = get_vendor_name(import_name)
+    if (version_info != None) and (vendor_name != None):
         BASE_URL = "https://services.nvd.nist.gov/rest/json/cpes/2.0"
-        QUERY_PARAMETER = f"cpeName=cpe:2.3:a:{package_info[0]}:{import_name}:{package_info[1]}:*:*:*:*:python:*:*"
+        QUERY_PARAMETER = f"cpeName=cpe:2.3:a:{vendor_name}:{import_name}:{version_info}:*:*:*:*:python:*:*"
 
     # Use keyword search as a fallback alternative
     else:
         BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"
-        QUERY_PARAMETER = "keywordSearch=" + import_name + " " + "python"
+        QUERY_PARAMETER = "keywordSearch=" + import_name + " python package"
 
     QUERY_PARAMETER = QUERY_PARAMETER.replace(" ","%20")
     # Add the Authorization header
@@ -185,16 +185,64 @@ def extract_cves(json_data):
 '''
 AI-generated helper function
 '''
-def get_package_info(package_name):
+def get_vendor_name(package_name: str) -> str | None:
     """
-    Fetch package author and latest version from PyPI.
+    Queries the NVD CPE API to resolve and return the official 
+    assigned vendor name for a given package name. Returns None if not found.
+    """
+    # The official NVD API endpoint for CPE lookup
+    url = "https://nist.gov"
+    
+    # Query parameters using keywordSearch to target the package name
+    params = {
+        "keywordSearch": package_name,
+        "resultsPerPage": 1  # We only need the first valid record to extract the vendor
+    }
+    
+    try:
+        # Timeout prevents your script from hanging indefinitely if NVD is slow
+        response = requests.get(url, params=params, timeout=10)
+        
+        # Guard clause for HTTP errors (e.g., rate-limiting 403/429)
+        if response.status_code != 200:
+            return None
+            
+        data = response.json()
+        products = data.get("products", [])
+        
+        # If no products match the keyword, return None
+        if not products:
+            return None
+            
+        # Extract the full CPE string from the first matching product item
+        cpe_string = products[0]["cpe"]["cpeName"]
+        
+        # Example string format: "cpe:2.3:a:numfocus:pandas:2.2.1:*:*:*:*:*:*:*"
+        cpe_parts = cpe_string.split(":")
+        
+        # Ensure the string is long enough to safely extract index 3 (the vendor)
+        if len(cpe_parts) > 3:
+            return cpe_parts[3]
+            
+        return None
+
+    except (requests.RequestException, KeyError, IndexError):
+        # Gracefully handle network timeouts, drops, or unexpected API payload changes
+        return None
+
+
+'''
+AI-generated helper function
+'''
+def get_version_info(package_name):
+    """
+    Fetch latest version from PyPI.
 
     Args:
         package_name (str): Name of the package.
 
     Returns:
-        tuple: (author, latest_version)
-               Returns (None, None) on error or if not found.
+        latest_version or None if error or if not found.
     """
     url = f"https://pypi.org/pypi/{package_name}/json"
 
@@ -202,21 +250,15 @@ def get_package_info(package_name):
         response = requests.get(url, timeout=5)
 
         if response.status_code != 200:
-            return (None, None)
+            return None
 
         data = response.json()
         info = data.get("info", {})
-
-        author = info.get("author") or None
         version = info.get("version") or None
-
-        if author is None and version is None:
-            return (None, None)
-
-        return (author, version)
-
+        return version
+    
     except Exception:
-        return (None, None)
+        return None
 
 def main(): 
     
