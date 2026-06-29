@@ -288,13 +288,14 @@ def main():
     print("Found these imports: " + str(import_names.keys()))
     setup_report()
     for i in import_names.keys():
-        if (i in sys.builtin_module_names) or (i in sys.stdlib_module_names):
-            print(f"Skipping built-in module {i}.")
-            continue
         print(f"Investigating module {i}.")
         import_renames = [i] + import_names[i]
         context = get_context(paths, import_renames)
-        cves = query_nist_database(i)
+        if (i in sys.builtin_module_names) or (i in sys.stdlib_module_names):
+            print(f"Skipping CVES for built-in module {i}.")
+            cves = query_nist_database(i)
+        else:
+            cves = []
         update_report(i, import_names[i], context, cves)
 
     finalize_report()
