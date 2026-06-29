@@ -36,7 +36,7 @@ def find_imports(paths):
     for path in paths:
         with open(path,"r") as f:
             for line in f: 
-                rename_import_regex = r"\Aimport\s\w+\sas\s\w+"
+                rename_import_regex = r"\A\s*import\s\w+\sas\s\w+"
                 match = re.match(rename_import_regex, line)
                 if (match):
                     found = match.group()
@@ -47,7 +47,7 @@ def find_imports(paths):
                     else:
                         imports_dict[import_name].append(nickname)
 
-                submodule_rename_import = r"\Afrom\s\w+\simport\s\w+\sas\s\w+"
+                submodule_rename_import = r"\A\s*from\s\w+\simport\s\w+\sas\s\w+"
                 match = re.match(submodule_rename_import, line)
                 if (match):
                     found = match.group()
@@ -59,7 +59,7 @@ def find_imports(paths):
                         imports_dict[import_name].append(nickname)
 
                 #Find basic imports as well
-                simple_import_regex = r"\Aimport\s\w+"
+                simple_import_regex = r"\A\s*import\s\w+"
                 match = re.match(simple_import_regex, line)
                 if (match):
                     found = match.group()
@@ -148,7 +148,7 @@ def query_nist_database(import_name):
     else:
         print(f"Import {import_name}: No NVD vendor found. Using keyword not cpe search.")
         BASE_URL = "https://services.nvd.nist.gov/rest/json/cves/2.0"
-        QUERY_PARAMETER = "keywordSearch=" + import_name + " python package"
+        QUERY_PARAMETER = "keywordSearch=" + import_name + " python"
 
     QUERY_PARAMETER = QUERY_PARAMETER.replace(" ","%20")
     # Add the Authorization header
