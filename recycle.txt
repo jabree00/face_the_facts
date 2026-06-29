@@ -1,0 +1,13 @@
+            rename_import_regex = r"\Aimport \w{3,20} as \w{3,20}"
+            match = re.match(rename_import_regex, line)
+            if (match):
+                found = match.group()
+                parsed = found.split()[3]
+                imports.append(parsed)  
+                  
+            from_import_regex = r"\Afrom \w{3,20} import \w{3,20}"
+            match = re.match(from_import_regex, line)
+            if (match):
+                found = match.group()
+                parsed = found.split()[1]
+                imports.append(parsed)  

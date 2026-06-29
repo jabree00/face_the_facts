@@ -1,0 +1,6 @@
+#config
+venv/
+.venv/ 
+
+#secrets
+.env

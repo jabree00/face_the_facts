@@ -1,96 +1,174 @@
-<h1>READ ME! (please)</h1>
+```md
+# READ ME! (please)
 
-<p>Face the Facts is a script that identifies package vulnerabilites within a given Python project.</p>
+Face the Facts is a script that identifies package vulnerabilities within a given Python project.
 
-<h2>Resources Consulted</h2>
-<ul>
-    <li><a href="https://pypi.org/project/requests/">Using Python requests package</a></li>
-    <li><a href="https://nvd.nist.gov/developers/vulnerabilities">Using NIST Vulnerability API</a></li>
-    <li><a href="https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=pip%20python">Sample NIST API Endpoint</a></li>
-    <li><a href="https://www.w3schools.com/python/python_dictionaries_loop.asp">Looping through Python Dictionaries</a></li>
-    <li><a href="https://www.w3schools.com/tags/tag_a.asp">Creating a tag elements</a></li>
-    <li><a href="https://www.w3schools.com/python/ref_list_append.asp">Appending to Python list</a></li>
-    <li><a href="https://www.w3schools.com/python/python_json.asp">Importing JSON package</a></li>
-    <li><a href="https://www.geeksforgeeks.org/python/python-list-files-in-a-directory/">Listing files in a directory</a></li>
-    <li><a href="https://www.w3schools.com/python/ref_list_pop.asp">Pop from list python</a></li>
-    <li><a href="https://www.geeksforgeeks.org/python/python-ways-to-concatenate-two-lists/">Merge Python Lists</a></li>
-    <li><a href="https://www.w3schools.com/python/python_match.asp">Python Matches</a></li>
-    <li><a href="https://stackoverflow.com/questions/15221473/how-do-i-update-upgrade-pip-itself-from-inside-my-virtual-environment">Upgrading Pip</a></li>
-    <li><a href="https://www.geeksforgeeks.org/python/re-match-in-python/">Regex Match Python</a></li>
-    <li><a href="https://www.w3schools.com/python/python_file_open.asp">Reading File in Python</a></li>
-    <li><a href="https://www.w3schools.com/python/python_regex.asp">Python Regex Special Characters</a></li>
-    <li><a href="https://stackoverflow.com/questions/68094079/wrap-text-in-txt-file-with-python3">Using Text Wrap</a></li>
-    <li><a href="https://www.w3schools.com/python/ref_module_textwrap.asp">More on Using Text Wrap</a></li>
-</ul>
+---
 
-<h2>Problem Definition</h2>
-<p><strong>What specific problem are you addressing?</strong> This project identifies vulnerabilites statically, without running the code. This avoids unnecessary exposure to vulnerabilites.</p>
+## Resources Consulted
 
-<p><strong>Why is the problem important?</strong> Manually identifying all vulnerabilities in a code base is a lot of work. This makes developers less likely to take the time to find those vulnerabilities.</p>
+- [Using Python requests package](https://pypi.org/project/requests/)
+- [Using NIST Vulnerability API](https://nvd.nist.gov/developers/vulnerabilities)
+- [Sample NIST API Endpoint](https://services.nvd.nist.gov/rest/json/cves/2.0?keywordSearch=pip%20python)
+- [Looping through Python Dictionaries](https://www.w3schools.com/python/python_dictionaries_loop.asp)
+- [Creating anchor tag elements](https://www.w3schools.com/tags/tag_a.asp)
+- [Appending to Python list](https://www.w3schools.com/python/ref_list_append.asp)
+- [Importing JSON package](https://www.w3schools.com/python/python_json.asp)
+- [Listing files in a directory](https://www.geeksforgeeks.org/python/python-list-files-in-a-directory/)
+- [Pop from Python list](https://www.w3schools.com/python/ref_list_pop.asp)
+- [Merge Python Lists](https://www.geeksforgeeks.org/python/python-ways-to-concatenate-two-lists/)
+- [Python Matches](https://www.w3schools.com/python/python_match.asp)
+- [Upgrading Pip](https://stackoverflow.com/questions/15221473/how-do-i-update-upgrade-pip-itself-from-inside-my-virtual-environment)
+- [Regex Match Python](https://www.geeksforgeeks.org/python/re-match-in-python/)
+- [Reading File in Python](https://www.w3schools.com/python/python_file_open.asp)
+- [Python Regex Special Characters](https://www.w3schools.com/python/python_regex.asp)
+- [Using Text Wrap](https://stackoverflow.com/questions/68094079/wrap-text-in-txt-file-with-python3)
+- [More on Using Text Wrap](https://www.w3schools.com/python/ref_module_textwrap.asp)
+- [Linking Stylesheets](https://www.w3schools.com/css/css_howto.asp)
+- [Adding Initial HTML Components](https://www.w3schools.com/tags/tag_doctype.asp)
 
-<p><strong>What existing tools or approaches exist?</strong> There are several exisiting tools including pip-audit, Trivy, and OSV Scanner - as identified by ChatGPT.</p>
+---
 
-<p><strong>What gap does your tool fill?</strong> In addition to being open-source and free, my tool provides the context of the import's usage. Ideally, this allows the analyst to more quickly determine and remember whether that vulnerability may apply to the project.</p>
+## Problem Definition
 
+### What specific problem are you addressing?
+This project identifies vulnerabilities statically, without running the code. This avoids unnecessary exposure to vulnerabilities.
 
-<h2>System Design</h2>
-<p><strong>High level architecture:</strong> This project runs in a single Python script.</p>
+### Why is the problem important?
+Manually identifying all vulnerabilities in a codebase is time-consuming. This makes developers less likely to take the time to find those vulnerabilities.
 
-<p><strong>Technology choices and justification:</strong> Python is widely used programming language, so this language allows the program to be easily run, understood, and adapted.</p>
+### What existing tools or approaches exist?
+There are several existing tools including:
+- pip-audit
+- Trivy
+- OSV Scanner
 
- 
-<h2>Evaluation</h2>
-<p><strong>How did you test the tool?</strong></p>
-<p>Gemini created a small Python project. I added additional imports. I commented out one import as well as added an "import ______ as _____" statement to see if the script is effective in these cases.</p>
- 
-<p><strong>Results:</strong>The script is able to successfully identify many CVES relevant to the import. However, some imports have simple names that could be used for non-Python vulnerabilities - i.e. the requests package. If the package name resembles a dictionary word ("colorama" package would be a non-example), then additional keywords should be added to the search.</p>
+### What gap does your tool fill?
+In addition to being open-source and free, my tool provides the context of the import's usage. Ideally, this allows the analyst to more quickly determine and remember whether that vulnerability may apply to the project.
 
-<h2>Known Issues</h2>
-<ul>
-    <li>The current code scans all files (not just Python files), so there could be false positives of "import like" lines.</li>
-    <li>There is a large possibility for redundant API calls from files that import the same imports.</li>
-</ul>
+---
 
-<h2>How to Run this Project (One Option):</h2>
-<ul>
-    <li>Download VSCode and run the following commands:</li>
-    <li>(If needed) Install Python</li>
-    <li>1. python -m venv venv</li>
-    <li>2. source venv/bin/activate</li>
-    <li>3. pip install -r requirements.txt</li>
-    <li>Select the latest version of Python (venv) as your interpreter.</li>
-    <li>Run python3 face_the_facts.py</li>
-</ul>
+## System Design
 
-<h2>AI Disclosure</h2>
-AI (Gemini) was used to conduct an initial search of tools that perform similar tasks. 
+### High-level architecture
+This project runs in a single Python script.
 
-<h3>For identifying similar apps</h3>
+### Technology choices and justification
+Python is a widely used programming language, so this allows the program to be easily run, understood, and adapted.
+
+---
+
+## Evaluation
+
+### How did you test the tool?
+Gemini created a small Python project. I added additional imports. I commented out one import and added an `import ______ as _____` statement to see if the script is effective in these cases.
+
+### Results
+The script successfully identifies many CVEs relevant to the import. However, some imports have simple names that could be confused with non-Python vulnerabilities (for example, the `requests` package).
+
+If the package name resembles a dictionary word (where `colorama` would be a non-example), additional keywords should be added to the search.
+
+---
+
+## Known Issues
+
+- The current code scans all files (not just Python files), so there could be false positives from import-like lines.
+- There is a large possibility for redundant API calls from files that import the same packages.
+
+---
+
+## How to Run this Project
+
+### Setup
+
+- Download VSCode
+- Install Python if needed
+
+### Create and activate virtual environment
+
+\`\`\`bash
+python -m venv venv
+source venv/bin/activate
+\`\`\`
+
+### Install dependencies
+
+\`\`\`bash
+pip install -r requirements.txt
+\`\`\`
+
+### Run the project
+
+- Select the latest version of Python (`venv`) as your interpreter
+
+\`\`\`bash
+python3 face_the_facts.py
+\`\`\`
+
+---
+
+## AI Disclosure
+
+AI (Gemini) was used to conduct an initial search of tools that perform similar tasks.
+
+### For Identifying Similar Apps
+
+Prompt:
+
+\`\`\`
 Are there any apps that statically scan a python project for imports and tell the user what known vulnerabilities exist in the imported packages?
+\`\`\`
 
-My follow-up prompts focused on verifying that these tools compare against a CVE database and determining whether these tools cost money. 
+Follow-up prompts focused on verifying that these tools compare against a CVE database and determining whether they cost money.
 
-<h3>For debugging...</h3>
+---
 
-Prompt #1 (Described my installation error)
-<strong>python venv keeps using anaconda 3.9 python instead of 3.14</strong>
+### For Debugging
 
-Prompt #2 (Supplied my error message to get debugging guidance):
-<strong>ERROR: Ignored the following yanked versions: 2.32.0, 2.32.1
-ERROR: Ignored the following versions that require a different python version: 2.33.0 Requires-Python >=3.10; 2.33.1 Requires-Python >=3.10; 2.34.0 Requires-Python >=3.10; 2.34.0.dev1 Requires-Python >=3.10; 2.34.1 Requires-Python >=3.10; 2.34.2 Requires-Python >=3.10
-ERROR: Could not find a version that satisfies the requirement requests===2.34.0 (from versions: 0.2.0, 0.2.1, 0.2.2, 0.2.3, 0.2.4, 0.3.0, 0.3.1, 0.3.2, 0.3.3, 0.3.4, 0.4.0, 0.4.1, 0.5.0, 0.5.1, 0.6.0, 0.6.1, 0.6.2, 0.6.3, 0.6.4, 0.6.5, 0.6.6, 0.7.0, 0.7.1, 0.7.2, 0.7.3, 0.7.4, 0.7.5, 0.7.6, 0.8.0, 0.8.1, 0.8.2, 0.8.3, 0.8.4, 0.8.5, 0.8.6, 0.8.7, 0.8.8, 0.8.9, 0.9.0, 0.9.1, 0.9.2, 0.9.3, 0.10.0, 0.10.1, 0.10.2, 0.10.3, 0.10.4, 0.10.6, 0.10.7, 0.10.8, 0.11.1, 0.11.2, 0.12.0, 0.12.1, 0.13.0, 0.13.1, 0.13.2, 0.13.3, 0.13.4, 0.13.5, 0.13.6, 0.13.7, 0.13.8, 0.13.9, 0.14.0, 0.14.1, 0.14.2, 1.0.0, 1.0.1, 1.0.2, 1.0.3, 1.0.4, 1.1.0, 1.2.0, 1.2.1, 1.2.2, 1.2.3, 2.0.0, 2.0.1, 2.1.0, 2.2.0, 2.2.1, 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.4.3, 2.5.0, 2.5.1, 2.5.2, 2.5.3, 2.6.0, 2.6.1, 2.6.2, 2.7.0, 2.8.0, 2.8.1, 2.9.0, 2.9.1, 2.9.2, 2.10.0, 2.11.0, 2.11.1, 2.12.0, 2.12.1, 2.12.2, 2.12.3, 2.12.4, 2.12.5, 2.13.0, 2.14.0, 2.14.1, 2.14.2, 2.15.1, 2.16.0, 2.16.1, 2.16.2, 2.16.3, 2.16.4, 2.16.5, 2.17.0, 2.17.1, 2.17.2, 2.17.3, 2.18.0, 2.18.1, 2.18.2, 2.18.3, 2.18.4, 2.19.0, 2.19.1, 2.20.0, 2.20.1, 2.21.0, 2.22.0, 2.23.0, 2.24.0, 2.25.0, 2.25.1, 2.26.0, 2.27.0, 2.27.1, 2.28.0, 2.28.1, 2.28.2, 2.29.0, 2.30.0, 2.31.0, 2.32.2, 2.32.3, 2.32.4, 2.32.5)
-ERROR: No matching distribution found for requests===2.34.0</strong>
+#### Prompt #1
 
-Ultimately, I needed to find the file path of the Python 3.14 installation and supply that file path when creating my virtual environment. 
+\`\`\`
+python venv keeps using anaconda 3.9 python instead of 3.14
+\`\`\`
 
-Prompt #3: Identify Resolutions for Newline Causing File Write Error 
-<strong>newline charcter causing erro python file writing</strong>
-I did not end up using ChatGPT's advice, but instead avoided using the character 
-that was causing the issue.
+#### Prompt #2
+I supplied my error message to get debugging guidance.
 
-<h3>For generating sample Python projects for testing...</h3>
+Ultimately, I needed to find the file path of the Python 3.14 installation and supply that path when creating my virtual environment.
 
-Gemini gave me the simple_calculator project after the following prompt:
-<strong>sample python project with imports</strong>
+#### Prompt #3
 
+\`\`\`
+newline character causing error python file writing
+\`\`\`
 
+I did not end up using ChatGPT's advice, but instead avoided using the character that was causing the issue.
+
+---
+
+### For Generating Sample Python Projects for Testing
+
+Gemini gave me the `simple_calculator` project after this prompt:
+
+\`\`\`
+sample python project with imports
+\`\`\`
+
+---
+
+## Prompts for Revisions
+
+- Give me a basic CSS file for a report with headers, paragraphs, ul, li. It should look professional.
+- Give me a basic CSS file that covers all of the major HTML elements. This is for a report. The goal is to make the page readable, simple, but aesthetic. One thing: make the page margin 20% on both sides.
+- Give me a Python project that uses lots of imports (this is for testing purposes). Use different styles of import statements.
+- I asked Gemini to show me how to supply an API key to an NVD GET request.
+- Give me a Python function that takes in a package name and returns the author and the latest version number of the package. If neither is found or there is an error, return `None` in the tuple output.
+- Clean up this README.md file to use unordered lists where there is just a series of bullets. If any other formatting is messed up or has syntax errors, please fix.
+
+---
+
+## Other Tips
+
+A NIST API key can be requested here:  
+https://nvd.nist.gov/developers/request-an-api-key
+```
