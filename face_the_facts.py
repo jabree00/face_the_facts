@@ -293,9 +293,9 @@ def main():
         context = get_context(paths, import_renames)
         if (i in sys.builtin_module_names) or (i in sys.stdlib_module_names):
             print(f"Skipping CVES for built-in module {i}.")
-            cves = query_nist_database(i)
-        else:
             cves = []
+        else:
+            cves = query_nist_database(i)
         update_report(i, import_names[i], context, cves)
 
     finalize_report()
